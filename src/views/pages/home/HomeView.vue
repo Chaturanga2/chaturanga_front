@@ -3,6 +3,7 @@
     <h1>Home</h1>
     <img alt="Vue logo" src="../../../assets/logo.png">
     <p>Welcome to Your Vue.js + TypeScript App</p>
+    <router-link to="/ChessRules">À propos</router-link>
   </div>
 </template>
 
