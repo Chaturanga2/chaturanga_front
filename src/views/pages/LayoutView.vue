@@ -3,6 +3,7 @@
         <HeaderComponent />
         <div class="container-fluid px-0 m-0">
             <RouterView />
+
         </div>
         <FooterComponent />
     </div>
@@ -13,11 +14,12 @@ import { defineComponent } from "vue";
 import HeaderComponent from "@/views/components/templates/HeaderComponent.vue";
 import FooterComponent from "@/views/components/templates/FooterComponent.vue";
 
-export default defineComponent( {
+
+
+export default defineComponent({
     name: "LayoutView",
-    components: {FooterComponent, HeaderComponent},
+    components: { FooterComponent, HeaderComponent },
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -4,6 +4,7 @@ import DashboardView from "@/views/pages/Dashboard/DashboardView.vue";
 import LoginView from "@/views/pages/authentication/LoginView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import HomeView from "@/views/pages/home/HomeView.vue";
+import ChessRules from "@/views/pages/Rules/ChessRules.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {path: "/sign-in", name: "LOGIN", component: LoginView},
@@ -14,6 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {path: "/dashboard", name: "DASHBOARD", component: DashboardView },
       {path: "/", name: "HOME", component: HomeView},
+      {path: "/ChessRules", name: "Regles", component: ChessRules},
     ],
   },
   { path: "/:pathMatch(.*)*", name: "NOT_FOUND", component: PageNotFoundView },
