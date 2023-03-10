@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import {User} from "@/types/users";
+import {UserLoginResponse} from '@/types/users'
 
 export default createStore({
   state: {
@@ -10,6 +11,16 @@ export default createStore({
   getters: {
   },
   mutations: {
+
+    setUser(state, user: User){
+      state.user = user;
+      localStorage.setItem("user", JSON.stringify(user))
+    },
+
+    setToken(state, token: string){
+      state.token = token;
+      localStorage.setItem("token", token)
+    },
 
     // Mutations are used to set the state values after page refresh
     initializeStore(state) {
@@ -22,6 +33,11 @@ export default createStore({
     },
   },
   actions: {
+    login({commit}, data: UserLoginResponse){
+      console.log(data)
+      commit("setUser", data.user)
+      commit("setToken", data.token)
+    }
   },
   modules: {
   }
