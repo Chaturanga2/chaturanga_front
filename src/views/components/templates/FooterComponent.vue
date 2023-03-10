@@ -1,16 +1,46 @@
 <template>
-    <div class="bg-success text-dark">
-        <h1>FOOTER</h1>
+  <footer>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">À propos</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </footer>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
-export default defineComponent({
-    name: "FooterComponent"
-});
-</script>
+<style>
+  footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+  }
 
-<style scoped>
+  nav {
+    display: inline-block;
+  }
 
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    color: #666;
+  }
 </style>
