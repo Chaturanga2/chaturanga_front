@@ -33,12 +33,10 @@ export default createStore({
   },
   actions: {
     login({commit}, data: UserLoginResponse){
-      console.log(data)
       commit("setUser", data.user)
       commit("setToken", data.token)
     },
     register({commit}, data: UserRegisterResponse){
-      console.log(data)
       commit("setUser", data.user)
       commit("setToken", data.token)
     }
