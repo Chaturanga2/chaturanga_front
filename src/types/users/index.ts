@@ -16,3 +16,10 @@ export type UserLoginResponse = {
     token?: string;
     token_type: string;
 };
+
+export type UserRegisterResponse = {
+    message?: string;
+    user?: User;
+    token?: string;
+    token_type: string;
+};

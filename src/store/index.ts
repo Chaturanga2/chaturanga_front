@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
-import {User} from "@/types/users";
-import {UserLoginResponse} from '@/types/users'
+import {User, UserRegisterResponse, UserLoginResponse} from "@/types/users";
 
 export default createStore({
   state: {
@@ -34,6 +33,11 @@ export default createStore({
   },
   actions: {
     login({commit}, data: UserLoginResponse){
+      console.log(data)
+      commit("setUser", data.user)
+      commit("setToken", data.token)
+    },
+    register({commit}, data: UserRegisterResponse){
       console.log(data)
       commit("setUser", data.user)
       commit("setToken", data.token)
