@@ -2,11 +2,13 @@ import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import LayoutView from "@/views/pages/LayoutView.vue";
 import DashboardView from "@/views/pages/Dashboard/DashboardView.vue";
 import LoginView from "@/views/pages/authentication/LoginView.vue";
+import RegisterView from "@/views/pages/register/RegisterView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import HomeView from "@/views/pages/home/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {path: "/sign-in", name: "LOGIN", component: LoginView},
+  {path: "/register", name: "REGISTER", component: RegisterView},
   {
     path: "/",
     redirect: "/",
