@@ -19,7 +19,5 @@ export type UserLoginResponse = {
 
 export type UserRegisterResponse = {
     message?: string;
-    user?: User;
-    token?: string;
-    token_type: string;
+    code?: number;
 };

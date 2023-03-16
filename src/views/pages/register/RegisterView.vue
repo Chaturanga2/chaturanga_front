@@ -4,32 +4,57 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card p-4">
-          <Form @submit="handleRegistration()" >
+          <Form @submit="handleRegistration()">
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur</label>
+              <ErrorMessage name="username" />
+              <Field
+                v-model="userData.username"
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Entrez votre nom d'utilisateur"
+                name="username"
+              />
+            </div>
             <div class="form-group">
               <label for="email">Adresse e-mail</label>
-              <ErrorMessage
-                name="email" />
+              <ErrorMessage name="email" />
               <Field
                 :rules="formValidation.checkEmail"
-                v-model="userData.email" 
-                type="email" 
-                class="form-control" 
-                id="email" 
-                placeholder="Entrez votre adresse e-mail" 
-                name="email" />
+                v-model="userData.email"
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Entrez votre adresse e-mail"
+                name="email"
+              />
             </div>
             <div class="form-group mt-3">
               <label for="password">Mot de passe</label>
-              <ErrorMessage
-                name="password" />
-              <Field 
+              <ErrorMessage name="password" />
+              <Field
                 :rules="formValidation.checkPassword"
-                v-model="userData.password" 
-                type="password" 
-                class="form-control" 
-                id="password" 
+                v-model="userData.password"
+                type="password"
+                class="form-control"
+                id="password"
                 placeholder="Entrez votre mot de passe"
-                name="password" />
+                name="password"
+              />
+            </div>
+            <div class="form-group mt-3">
+              <label for="password_confirmation">Confirmation de mot de passe</label>
+              <ErrorMessage name="password_confirmation" />
+              <Field
+                :rules="formValidation.checkPasswordConfirmation"
+                v-model="userData.password_confirmation"
+                type="password"
+                class="form-control"
+                id="password_confirmation"
+                placeholder="Confirmez votre mot de passe"
+                name="password_confirmation"
+              />
             </div>
             <button type="submit" class="btn btn-primary mt-3">Inscription</button>
           </Form>
@@ -55,8 +80,10 @@ export default defineComponent({
   data() {
     return {
       userData: {
+          username: "",
           email: "",
           password: "",
+          password_confirmation: ""
       },
       formValidation: FormValidationService, 
     }
@@ -65,8 +92,6 @@ export default defineComponent({
   methods: {
     handleRegistration(): void{
       //UserService.register(this.userData).then((response: UserRegisterResponse) => {this.$store.dispatch("register", response)})
-      const test = {user: this.userData, token: "Azertty"}
-      this.$store.dispatch("register", test)
     }
   }
 })

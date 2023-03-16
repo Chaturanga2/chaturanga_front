@@ -35,10 +35,6 @@ export default createStore({
     login({commit}, data: UserLoginResponse){
       commit("setUser", data.user)
       commit("setToken", data.token)
-    },
-    register({commit}, data: UserRegisterResponse){
-      commit("setUser", data.user)
-      commit("setToken", data.token)
     }
   },
   modules: {
