@@ -5,7 +5,7 @@ import LoginView from "@/views/pages/authentication/LoginView.vue";
 import RegisterView from "@/views/pages/register/RegisterView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import HomeView from "@/views/pages/home/HomeView.vue";
-import ChessRules from "@/views/pages/Rules/ChessRules.vue";
+import ChessRulesView from "@/views/pages/Rules/ChessRulesView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {path: "/sign-in", name: "LOGIN", component: LoginView},
@@ -17,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {path: "/dashboard", name: "DASHBOARD", component: DashboardView },
       {path: "/", name: "HOME", component: HomeView},
-      {path: "/ChessRules", name: "Regles", component: ChessRules},
+      {path: "/ChessRules", name: "CHESS_RULES", component: ChessRulesView},
     ],
   },
   { path: "/:pathMatch(.*)*", name: "NOT_FOUND", component: PageNotFoundView },
@@ -55,6 +55,4 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
-
 export default router

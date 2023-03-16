@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white text-dark">
         <HeaderComponent />
-        <div class="container-fluid px-0 m-0">
+        <div style="min-height: 88.5vh" class="container-fluid px-0 m-0">
             <RouterView />
 
         </div>
