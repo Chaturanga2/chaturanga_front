@@ -15,6 +15,7 @@ export default createStore({
   getters: {
     logo: (state) => state.theme.logo,
     navBar: (state) => state.theme.navbar,
+    subColor: (state) => state.theme.sub_color,
   },
   mutations: {
     setUser(state, user: User) {
@@ -29,6 +30,7 @@ export default createStore({
 
     setTheme(state, theme: Theme) {
       state.theme = theme;
+      console.log(theme)
       localStorage.setItem('theme', JSON.stringify(theme));
     },
 
@@ -40,16 +42,17 @@ export default createStore({
       if (localStorage.getItem('token')) {
         state.token = localStorage.getItem('token') || '';
       }
+      if (localStorage.getItem('theme')) {
+        state.theme = JSON.parse(localStorage.getItem('theme') || '{}');
+      }
     },
   },
   actions: {
     login({ commit }, data: UserLoginResponse) {
-      console.log(data);
       commit('setUser', data.user);
       commit('setToken', data.token);
     },
-    theme({ commit }, theme) {
-      console.log(theme);
+    theme({ commit }, theme: Theme) {
       commit('setTheme', theme);
     },
   },
