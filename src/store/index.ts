@@ -13,9 +13,7 @@ export default createStore({
     theme: {} as Theme,
   },
   getters: {
-    logo: (state) => state.theme.logo,
-    navBar: (state) => state.theme.navbar,
-    subColor: (state) => state.theme.sub_color,
+    theme: (state) => state.theme,
   },
   mutations: {
     setUser(state, user: User) {

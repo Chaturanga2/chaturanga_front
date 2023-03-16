@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid m-0 p-0">
-        <nav :class="$store.getters.navBar.navbar_bg" class="navbar navbar-expand-lg">
+        <nav :class="theme.navbar.navbar_bg" class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" :class="$store.getters.navBar.navbar_color" href="#"
+                <a class="navbar-brand" :class="theme.navbar.navbar_color" href="#"
                 >Chaturanga <img src="../../../assets/chessLogo.png" alt=""
                 /></a>
                 <button
@@ -20,7 +20,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <router-link
-                                :class="$store.getters.navBar.navbar_color"
+                                :class="theme.navbar.navbar_color"
                                 class="nav-link active"
                                 :to="{ name: 'HOME' }"
                             >Home
@@ -29,7 +29,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link
-                                :class="$store.getters.navBar.navbar_color"
+                                :class="theme.navbar.navbar_color"
                                 class="nav-link"
                                 :to="{ name: 'HOME' }"
                             >Link
@@ -45,7 +45,7 @@
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
-                                <img class="text-center" :src="$store.getters.logo.image" alt="eeeee"/>
+                                <img class="text-center" :src="theme.logo.image" alt="eeeee"/>
                             </a>
                             <ul style="width: 50px !important" class="dropdown-menu">
                                 <li
@@ -175,61 +175,12 @@ export default defineComponent({
             console.log(index);
         },
 
-        toggleNav() {
-            this.isOpen = !this.isOpen;
-        },
-        /**changeTheme(theme: Theme) {
-      this.theme = theme;
-      switch (theme) {
-        case Theme.GRYFFINDOR:
-          this.logo = '../../../assets/Gryffindor-Logo.png';
-          document.documentElement.style.setProperty(
-            '--primary-color',
-            '#7F0909'
-          );
-          document.documentElement.style.setProperty(
-            '--secondary-color',
-            '#FFD700'
-          );
-          break;
-        case Theme.SLYTHERIN:
-          this.logo = '../../../assets/Slytherin-Logo.png';
-          document.documentElement.style.setProperty(
-            '--primary-color',
-            '#2A623D'
-          );
-          document.documentElement.style.setProperty(
-            '--secondary-color',
-            '#AAA9A9'
-          );
-          break;
-        case Theme.RAVENCLAW:
-          this.logo = '../../../assets/Ravenclaw-Logo.png';
-          document.documentElement.style.setProperty(
-            '--primary-color',
-            '#0E1A40'
-          );
-          document.documentElement.style.setProperty(
-            '--secondary-color',
-            '#946B2D'
-          );
-          break;
-        case Theme.HUFFLEPUFF:
-          this.logo = '../../../assets/Hufflepuff-Logo.png';
-          document.documentElement.style.setProperty(
-            '--primary-color',
-            '#FFC107'
-          );
-          document.documentElement.style.setProperty(
-            '--secondary-color',
-            '#000000'
-          );
-          break;
-        default:
-          break;
-      }
-    },**/
     },
+    mounted() {
+        if (this.$store.getters.theme) {
+            this.theme = this.$store.getters.theme;
+        }
+    }
 });
 </script>
 
@@ -288,36 +239,4 @@ img {
     height: 32px;
 }
 
-.nav {
-    transition: background-color 0.3s ease;
-    color: var(--primary-color);
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: var(--primary-color);
-    padding: 10px;
-}
-
-.dropdown-menu {
-    width: 50px;
-}
-
-.navbar-light .navbar-nav .nav-link:hover {
-    color: var(--secondary-color);
-}
-
-.btn-theme {
-    border: none;
-    margin-right: 10px;
-    padding: 0;
-    background-color: transparent;
-}
-
-.btn-theme:focus {
-    outline: none;
-}
-
-.btn-theme:hover {
-    cursor: pointer;
-}
 </style>
