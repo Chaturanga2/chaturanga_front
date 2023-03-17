@@ -25,36 +25,36 @@ export default defineComponent({
                 {
                     name: "Le Roi",
                     description: "Une case par coup dans toutes les directions.",
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: "Reine",
                     description: "Peut se déplacer à la verticale, l'horizontale et en diagonale sans limite de nombre de cases.",
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: "Fou",
                     description: "Peut se déplacer en diagonale selon la couleur définie au début de la partie et sans limite de nombre de cases.",
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: "Cavalier",
                     description: "Se déplace en L de différentes façon : \n" +
                         "- Deux cases en horizontale ou en verticale et une case en direction perpendiculaire. \n" +
                         "- Une case en horizontale ou en verticale et deux cases en direction perpendiculaire.",
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: "Tour",
                     description: "Peut se déplacer horizontalement ou verticalement dans toutes les directions sans limite de nombre de cases.",
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: "Pion",
                     description: "- Déplace une case à la fois vers l'avant. \n" +
                         "- Déplace deux cases vers l'avant s'il n'a pas encore bougé. \n" +
                         "- Déplace une case en diagonale pour capturer la pièce de l'adversaire.",
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 }
             ]
         }

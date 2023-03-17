@@ -11,23 +11,23 @@
                 name="email" />
               <Field
                 :rules="formValidation.checkEmail"
-                v-model="userData.email" 
-                type="email" 
-                class="form-control" 
-                id="email" 
-                placeholder="Entrez votre adresse e-mail" 
+                v-model="userData.email"
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Entrez votre adresse e-mail"
                 name="email" />
             </div>
             <div class="form-group mt-3">
               <label for="password">Mot de passe</label>
               <ErrorMessage
                 name="password" />
-              <Field 
+              <Field
                 :rules="formValidation.checkPassword"
-                v-model="userData.password" 
-                type="password" 
-                class="form-control" 
-                id="password" 
+                v-model="userData.password"
+                type="password"
+                class="form-control"
+                id="password"
                 placeholder="Entrez votre mot de passe"
                 name="password" />
             </div>
@@ -51,15 +51,15 @@ export default defineComponent({
   name: "LoginView",
 
   components: {Form, Field, ErrorMessage},
-  
+
   data() {
         return {
             userData: {
                 email: "",
                 password: "",
             },
-            formValidation: FormValidationService, 
-            
+            formValidation: FormValidationService,
+
         }
   },
 

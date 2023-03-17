@@ -14,22 +14,36 @@ export default createStore({
   },
   getters: {
     theme: (state) => state.theme,
+    user: (state) => state.user,
+    is_authenticated: (state) => {
+      console.log(state.token)
+        return state.token !== '';
+    }
   },
   mutations: {
     setUser(state, user: User) {
-      state.user = user;
+      state.user = {
+        id: user.id,
+      };
       localStorage.setItem('user', JSON.stringify(user));
     },
 
     setToken(state, token: string) {
       state.token = token;
-      localStorage.setItem('token', token);
+      localStorage.setItem('token', 'token');
     },
 
     setTheme(state, theme: Theme) {
       state.theme = theme;
-      console.log(theme)
       localStorage.setItem('theme', JSON.stringify(theme));
+    },
+
+    setLogout(state) {
+        state.user = {} as User;
+        state.token = '';
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        console.log(state.token)
     },
 
     // Mutations are used to set the state values after page refresh
@@ -53,6 +67,10 @@ export default createStore({
     theme({ commit }, theme: Theme) {
       commit('setTheme', theme);
     },
+
+    logout({ commit }) {
+      commit('setLogout');
+    }
   },
   modules: {},
 });
