@@ -1,0 +1,52 @@
+.nav_bar_bg_gryffindor {
+    background-color: #740001 !important;
+}
+
+.nav_bar_bg_slytherin {
+    background-color: #1a472a !important;
+}
+
+.nav_bar_bg_ravenclaw {
+    background-color: #0e1a40 !important;
+}
+
+.nav_bar_bg_hufflepuff {
+    background-color: #ecb939 !important;
+}
+
+.nav_bar_color_gryffindor {
+    color: #d3a625 !important;
+}
+
+.nav_bar_color_slytherin {
+    color: #aaaaaa !important;
+}
+
+.nav_bar_color_ravenclaw {
+    color: #946b2d !important;
+}
+
+.nav_bar_color_hufflepuff {
+    color: #372e29 !important;
+}
+
+.sub_color_gryffindor {
+    color: #ac0001 !important;
+}
+
+.sub_color_slytherin {
+    color: #2a623d !important;
+}
+
+.sub_color_ravenclaw {
+    color: #222f5b !important;
+}
+
+.sub_color_hufflepuff {
+    color: #f0c75e !important;
+}
+
+/** END NAVBAR*/
+img {
+    height: 32px;
+}

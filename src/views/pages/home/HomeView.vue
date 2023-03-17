@@ -1,9 +1,12 @@
 <template>
   <div class="">
-    <h1>Home</h1>
-    <img alt="Vue logo" src="../../../assets/logo.png">
-    <p>Welcome to Your Vue.js + TypeScript App</p>
-    <router-link to="/ChessRules">À propos</router-link>
+    <img src="" alt="" />
+    <h1>dfgdfgdfgdfg</h1>
+    <p>fdgdsgfgdfgfdgdfgdfgdfgdfgdfgdfgdfg</p>
+    <h1>dfgdfgdfgdfg</h1>
+    <p>fdgdsgfgdfgfdgdfgdfgdfgdfgdfgdfgdfg</p>
+
+    <button btn>zefefzefzefzf</button>
   </div>
 </template>
 
