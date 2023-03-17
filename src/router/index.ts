@@ -6,10 +6,9 @@ import RegisterView from "@/views/pages/register/RegisterView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import HomeView from "@/views/pages/home/HomeView.vue";
 import ChessRulesView from "@/views/pages/Rules/ChessRulesView.vue";
+import MyAccountView from "@/views/pages/MyAccount/MyAccountView.vue"
 
 const routes: Array<RouteRecordRaw> = [
-  {path: "/sign-in", name: "LOGIN", component: LoginView},
-  {path: "/register", name: "REGISTER", component: RegisterView},
   {
     path: "/",
     redirect: "/",
@@ -18,6 +17,9 @@ const routes: Array<RouteRecordRaw> = [
       {path: "/dashboard", name: "DASHBOARD", component: DashboardView },
       {path: "/", name: "HOME", component: HomeView},
       {path: "/ChessRules", name: "CHESS_RULES", component: ChessRulesView},
+      {path: "/sign-in", name: "LOGIN", component: LoginView},
+      {path: "/register", name: "REGISTER", component: RegisterView},
+      {path: "/profile", name: "PROFILE", component: MyAccountView},
     ],
   },
   { path: "/:pathMatch(.*)*", name: "NOT_FOUND", component: PageNotFoundView },
