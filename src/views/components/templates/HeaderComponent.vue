@@ -3,7 +3,7 @@
         <nav :class="theme.navbar.navbar_bg" class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" :class="theme.navbar.navbar_color" href="#"
-                >Chaturanga <img src="../../../assets/images/chessLogo.png" alt=""
+                >{{ t("name") }} <img src="../../../assets/images/chessLogo.png" alt=""
                 /></a>
                 <button
                     class="navbar-toggler"
@@ -109,8 +109,13 @@
 import {defineComponent} from 'vue';
 import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
 import { PATHS_NAME } from '@/constants';
+import { useTranslation } from '@/utils/useTranslation';
 
 export default defineComponent({
+    setup() {
+        const { t } = useTranslation()
+        return { t };
+    },
     name: 'HeaderComponent',
     data() {
         return {
