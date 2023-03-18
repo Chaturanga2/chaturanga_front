@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useTranslation } from '../../../utils/useTranslation';
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default defineComponent({
     setup() {

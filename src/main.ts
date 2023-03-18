@@ -4,7 +4,7 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-import i18n from './plugins/i18n';
+import { i18n } from './plugins';
 import './themes/Gryffondor.scss';
 import './themes/Serdaigle.scss';
 import './themes/Poufsouffle.scss';

@@ -46,9 +46,9 @@
 import {defineComponent} from 'vue';
 import {Form, Field, ErrorMessage} from 'vee-validate';
 import {FormValidationService} from '@/services/FormValidation.service'
-import { useTranslation } from '../../../utils/useTranslation';
 import UserService from '@/services/User.service'
 import { UserLoginResponse } from '@/types/users';
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default defineComponent({
   setup() {

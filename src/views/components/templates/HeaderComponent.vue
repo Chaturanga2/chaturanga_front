@@ -109,7 +109,7 @@
 import {defineComponent} from 'vue';
 import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
 import { PATHS_NAME } from '@/constants';
-import { useTranslation } from '@/utils/useTranslation';
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default defineComponent({
     setup() {

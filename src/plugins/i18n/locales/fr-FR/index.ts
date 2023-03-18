@@ -1,3 +1,3 @@
-import frTranslations from "./translation.json";
+import frTranslations from './translation.json';
 
 export default frTranslations;

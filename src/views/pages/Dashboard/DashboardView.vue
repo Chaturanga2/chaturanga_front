@@ -227,7 +227,7 @@
 
 <script>
 
-import { useTranslation } from '../../../utils/useTranslation';
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default {
     setup() {
