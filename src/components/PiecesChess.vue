@@ -27,32 +27,32 @@ export default defineComponent({
                 {
                     name: t('game.pieces.king.name'),
                     description: t('game.pieces.king.desc'),
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: t('game.pieces.queen.name'),
                     description: t('game.pieces.queen.desc'),
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: t('game.pieces.bishop.name'),
                     description: t('game.pieces.bishop.desc'),
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: t('game.pieces.knight.name'),
                     description: t('game.pieces.knight.desc'),
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: t('game.pieces.rook.name'),
                     description: t('game.pieces.rook.desc'),
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 },
                 {
                     name: t('game.pieces.pawn.name'),
                     description: t('game.pieces.pawn.desc'),
-                    image: require("@/assets/roi.png")
+                    image: require("@/assets/images/roi.png")
                 }
             ]
         }

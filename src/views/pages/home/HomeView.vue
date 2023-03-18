@@ -6,7 +6,6 @@
       </div>
     <div class="col col-md-10 text-center card-body mx-auto">
       <h2>Qui sommes nous ?</h2>
-
       <p class="mb-4">Chaturanga est un site Web pour jouer aux échecs version sorcier entre amis ou avec des inconnus en
         ligne</p>
       <h2>Mais comment jouer à ce jeu ?</h2>
