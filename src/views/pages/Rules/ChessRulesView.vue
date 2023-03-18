@@ -14,7 +14,7 @@
 <script lang="ts">
 
 import PiecesChess from '@/components/PiecesChess.vue';
-import { useTranslation } from '../../../utils/useTranslation';
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default {
     setup() {

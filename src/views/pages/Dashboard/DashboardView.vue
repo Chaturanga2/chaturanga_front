@@ -259,8 +259,7 @@
 <script lang="ts">
 import {Form, Field, ErrorMessage} from 'vee-validate';
 import {FormValidationService} from '@/services/FormValidation.service';
-import { useTranslation } from '../../../utils/useTranslation';
-
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default {
     setup() {

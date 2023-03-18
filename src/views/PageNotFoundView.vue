@@ -26,9 +26,8 @@
 <script lang="ts">
 
 import { defineComponent } from "vue";
-
 import { PATHS_NAME } from "../constants";
-import { useTranslation } from "../utils/useTranslation";
+import { useTranslation } from "@/utilities/useTranslation";
 export default defineComponent({
   setup() {
     const { t } = useTranslation();
