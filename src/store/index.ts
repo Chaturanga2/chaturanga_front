@@ -54,11 +54,9 @@ export default createStore({
 			const userToken = localStorage.getItem(KEYS.USER_TOKEN);
 			const userTheme = localStorage.getItem(KEYS.USER_THEME);
 
-			if ((user && userToken && userTheme) === null) return state;
-
-			state.user = user !== null ? JSON.parse(user) : state.user;
-			state.token = userToken !== null ? userToken : state.token;
-			state.theme = userTheme !== null ? JSON.parse(userTheme) : state.theme;
+			state.user = user ? JSON.parse(user) : state.user;
+			state.token = userToken ? userToken : state.token;
+			state.theme = userTheme ? JSON.parse(userTheme) : state.theme;
 		},
 	},
 	actions: {
