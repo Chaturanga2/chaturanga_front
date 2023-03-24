@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
-import {User, UserRegisterResponse, UserLoginResponse} from "@/types/users";
+import { User, UserRegisterResponse, UserLoginResponse} from "@/types/users";
+import { Theme, Logo, Navbar } from '@/types/themes';
 
 export default createStore({
   state: {
@@ -32,9 +33,16 @@ export default createStore({
     },
   },
   actions: {
-    login({commit}, data: UserLoginResponse){
-      commit("setUser", data.user)
-      commit("setToken", data.token)
+    login({ commit }, data: UserLoginResponse) {
+      commit('setUser', data.user);
+      commit('setToken', data.token);
+    },
+    theme({ commit }, theme: Theme) {
+      commit('setTheme', theme);
+    },
+
+    logout({ commit }) {
+      commit('setLogout');
     }
   },
   modules: {
