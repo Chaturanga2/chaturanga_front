@@ -3,7 +3,7 @@ import { User, UserLoginResponse } from "@/types/users";
 
 class UserService {
     async login(user: User): Promise<UserLoginResponse>{
-        const {data} : {data: UserLoginResponse} = await axiosInstance.post('/login', user);
+        const {data} : {data: UserLoginResponse} = await axiosInstance.post('/auth/login', user);
         return data;
     }
 }

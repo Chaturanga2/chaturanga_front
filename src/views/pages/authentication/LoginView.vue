@@ -44,8 +44,8 @@
 import { defineComponent } from 'vue';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import {FormValidationService} from '@/services/FormValidation.service'
-//import UserService from '@/services/User.service'
-//import { UserLoginResponse } from '@/types/users';
+import UserService from '@/services/User.service'
+import { UserLoginResponse } from '@/types/users';
 
 export default defineComponent({
   name: "LoginView",
@@ -65,9 +65,7 @@ export default defineComponent({
 
   methods: {
     handleLogin(): void{
-      //UserService.login(this.userData).then((Response: UserLoginResponse) => {this.$store.dispatch("login", Response)})
-      const test = {user: this.userData, token: "Azertty"}
-      this.$store.dispatch("login", test)
+      UserService.login(this.userData).then((Response: UserLoginResponse) => {this.$store.dispatch("login", Response)})
     }
   }
 })

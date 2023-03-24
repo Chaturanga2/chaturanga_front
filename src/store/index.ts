@@ -61,7 +61,8 @@ export default createStore({
   },
   actions: {
     login({ commit }, data: UserLoginResponse) {
-      commit('setUser', data.user);
+      console.log(data);
+      //commit('setUser', data.user);
       commit('setToken', data.token);
     },
     theme({ commit }, theme: Theme) {
