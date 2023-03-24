@@ -1,6 +1,7 @@
-import { createStore } from 'vuex'
-import { User, UserRegisterResponse, UserLoginResponse} from "@/types/users";
-import { Theme, Logo, Navbar } from '@/types/themes';
+import { createStore } from 'vuex';
+import { User } from '@/types/users';
+import { UserLoginResponse } from '@/types/users';
+import { UserRegisterResponse } from '@/types/users';
 
 export default createStore({
   state: {
