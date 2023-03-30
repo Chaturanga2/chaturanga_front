@@ -1,0 +1,65 @@
+{
+    "name": "Chaturanga",
+    "routes": {
+        "home": "Accueil",
+        "rules": "Règles",
+        "about": "À propos de nous",
+        "contact": "Contact"
+    },
+    "errors": {
+        "noValue": "Aucune valeur fournie",
+        "invalidInput": "La saisie fournie ne correspond pas au format requis",
+        "invalidPassword": "Le mot de passe fourni doit contenir au moins 7 caractères",
+        "pageNotFound": {
+            "title": "On dirait que vous êtes perdu, sorcier",
+            "message": "La page que vous recherchez n'est pas disponible",
+            "404": "404"
+        }
+    },
+    "forms": {
+        "register": "S'inscrire",
+        "username": "Nom d'utilisateur",
+        "login": "Se connecter",
+        "email": "{before} E-mail",
+        "password": "{before} Mot de passe",
+        "placeholder": "Entrez votre",
+        "confirm": "Confirmez votre"
+    },
+    "admin": {
+        "dashboard": "Tableau de bord d'administration"
+    },
+    "game": {
+        "title": "Règles du jeu d'échecs",
+        "subTitle": "Règles de base",
+        "gameRules": "Le jeu d'échecs se joue sur un plateau de 64 cases, alternativement claires et foncées, appelées cases blanches et noires. Chaque joueur commence le jeu avec 16 pièces : un roi, une reine, deux tours, deux fous, deux cavaliers et huit pions.",
+        "endGame": "Fin du jeu",
+        "endGameRules": "Le jeu se termine lorsqu'un joueur met en échec et mat le roi de l'adversaire, ce qui signifie que le roi est menacé de capture sans aucune possibilité d'évasion, ou si l'un des joueurs déclare une partie nulle.",
+        "pieces": {
+            "all": "Toutes les pièces :",
+            "king": {
+                "name" : "Le Roi",
+                "desc": "Une case par coup dans toutes les directions."
+            },
+            "queen": {
+                "name": "La Reine",
+                "desc": "Peut se déplacer à la verticale, l'horizontale et en diagonale sans limite de nombre de cases."
+            },
+            "bishop": {
+                "name": "Fou",
+                "desc": "Peut se déplacer en diagonale selon la couleur définie au début de la partie et sans limite de nombre de cases."
+            },
+            "knight": {
+                "name": "Le Cavalier",
+                "desc": "Se déplace en L de différentes façons :\n- Deux cases en horizontale ou en verticale et une case en direction perpendiculaire.\n- Une case en horizontale ou en verticale et deux cases en direction perpendiculaire."
+            },
+            "rook": {
+                "name": "La Tour",
+                "desc": "Peut se déplacer horizontalement ou verticalement dans toutes les directions sans limite de nombre de cases."
+            },
+            "pawn": {
+                "name": "Le Pion",
+                "desc": "\nDéplace une case à la fois vers l'avant.\nDéplace deux cases vers l'avant s'il n'a pas encore bougé.\nDéplace une case en diagonale"
+            }
+        }
+    }
+}

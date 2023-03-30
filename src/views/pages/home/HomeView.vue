@@ -1,14 +1,11 @@
 <template>
   <div class="container">
       <h1 class="text-center">Bienvenue sur Chaturanga, le nouveau jeu d'échecs en ligne !</h1>
-
       <div class="col text-center py-5 mt-5">
           <img src="../../../assets/board.png" class="rounded w-50 h-50" alt="">
       </div>
-
     <div class="col col-md-10 text-center card-body mx-auto">
       <h2>Qui sommes nous ?</h2>
-
       <p class="mb-4">Chaturanga est un site Web pour jouer aux échecs version sorcier entre amis ou avec des inconnus en
         ligne</p>
       <h2>Mais comment jouer à ce jeu ?</h2>
@@ -22,18 +19,21 @@
       <button class="btn btn-lg btn-danger mb-3 mt-3 ">
         Jouez maintenant
       </button>
-
-      <p>Vous ne connaissez pas les règles du jeu ? <router-link to="/ChessRules">Cliquez ici</router-link></p>
-
-
+      <p>Vous ne connaissez pas les règles du jeu ?   <router-link to="/ChessRules">{{ t("routes.about") }}</router-link></p>
     </div>
+
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default defineComponent({
+  setup() {
+    const { t } = useTranslation();
+    return { t }
+  },
   name: 'HomeView',
 });
 </script>
