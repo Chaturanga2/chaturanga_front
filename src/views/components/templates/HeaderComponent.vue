@@ -54,7 +54,7 @@
                                 <router-link
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link active"
-                                    :to="{ name: 'LOGIN' }"
+                                    :to="{ name: PATHS_NAME.LOGIN }"
                                 >Sign In
                                 </router-link>
                             </li>
@@ -62,7 +62,7 @@
                                 <router-link
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
-                                    :to="{ name: 'REGISTER' }"
+                                    :to="{ name: PATHS_NAME.REGISTER }"
                                 >Sign Up
                                 </router-link>
                             </li>
@@ -72,7 +72,7 @@
                                 <router-link
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
-                                    :to="{ name: 'HOME' }"
+                                    :to="{ name: PATHS_NAME.HOME }"
                                 >My Account
                                 </router-link>
                             </li>
@@ -80,7 +80,7 @@
                                 <router-link
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
-                                    :to="{ name: 'HOME' }"
+                                    :to="{ name: PATHS_NAME.HOME }"
                                 >Ranking
                                 </router-link>
                             </li>
@@ -88,7 +88,7 @@
                                 <router-link
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
-                                    :to="{ name: 'HOME' }"
+                                    :to="{ name: PATHS_NAME.HOME }"
                                 >Play
                                 </router-link>
                             </li>
@@ -108,6 +108,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
+import { PATHS_NAME } from '@/constants';
 
 export default defineComponent({
     name: 'HeaderComponent',
@@ -116,6 +117,7 @@ export default defineComponent({
             theme: DefaultTheme,
             logos: DefaultLogo,
             navCodeColor: DefaultNavCodeColor,
+            PATHS_NAME
         }
     },
     methods: {
