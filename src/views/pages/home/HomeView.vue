@@ -1,7 +1,11 @@
 <template>
   <div class="container">
-    <h1 class="text-center">Bienvenue sur Chaturanga, le nouveau jeu d'échecs en ligne !</h1>
-    <img src="../../../assets/board.png" class="rounded mx-auto d-block my-5 w-25">
+      <h1 class="text-center">Bienvenue sur Chaturanga, le nouveau jeu d'échecs en ligne !</h1>
+
+      <div class="col text-center py-5 mt-5">
+          <img src="../../../assets/board.png" class="rounded w-50 h-50" alt="">
+      </div>
+
     <div class="col col-md-10 text-center card-body mx-auto">
       <h2>Qui sommes nous ?</h2>
 
