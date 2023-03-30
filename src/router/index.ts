@@ -8,13 +8,13 @@ import HomeView from "@/views/pages/home/HomeView.vue";
 import ChessRulesView from "@/views/pages/Rules/ChessRulesView.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  {path: "/sign-in", name: "LOGIN", component: LoginView},
-  {path: "/register", name: "REGISTER", component: RegisterView},
   {
     path: "/",
     redirect: "/",
     component: LayoutView,
     children: [
+      {path: "/login", name: "LOGIN", component: LoginView},
+      {path: "/register", name: "REGISTER", component: RegisterView},
       {path: "/dashboard", name: "DASHBOARD", component: DashboardView },
       {path: "/", name: "HOME", component: HomeView},
       {path: "/ChessRules", name: "CHESS_RULES", component: ChessRulesView},
@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
   // trying to access a restricted page + not logged in
   // redirect to login page
   if (authRequired && !loggedIn) {
-    return next("/sign-in");
+    return next("/login");
   } else {
     if ((to.name === "LOGIN" || to.name === "REGISTER") && loggedIn) {
       console.log("redirect to dashboard");
