@@ -17,13 +17,13 @@ const routes: Array<RouteRecordRaw> = [
     component: LayoutView,
     children: [
       {path: "/login", name: "LOGIN", component: LoginView},
-      {path: "/register", name: "REGISTER", component: RegisterView},
-      {path: "/dashboard", name: "DASHBOARD", component: DashboardView },
-      {path: "/", name: "HOME", component: HomeView},
-      {path: "/ChessRules", name: "CHESS_RULES", component: ChessRulesView},
+      {path: "/register", name: PATHS_NAME.REGISTER, component: RegisterView},
+      {path: "/dashboard", name: PATHS_NAME.DASHBOARD, component: DashboardView },
+      {path: "/", name: PATHS_NAME.HOME, component: HomeView},
+      {path: "/ChessRules", name: PATHS_NAME.CHESS_RULES, component: ChessRulesView},
     ],
   },
-  { path: "/:pathMatch(.*)*", name: "NOT_FOUND", component: PageNotFoundView },
+  { path: "/:pathMatch(.*)*", name: PATHS_NAME.NOT_FOUND, component: PageNotFoundView },
 ];
 
 const router = createRouter({
