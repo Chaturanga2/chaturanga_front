@@ -11,19 +11,19 @@ import ChessRulesView from "@/views/pages/Rules/ChessRulesView.vue";
 import DashboardView from "@/views/pages/Dashboard/DashboardView.vue";
 
 const routes: Array<RouteRecordRaw> = [
-	{ path: "/sign-in", name: PATHS_NAME.LOGIN, component: LoginView },
-	{ path: "/register", name: PATHS_NAME.REGISTER, component: RegisterView },
-	{
-		path: "/",
-		redirect: "/",
-		component: LayoutView,
-		children: [
-			{ path: "/", name: PATHS_NAME.HOME, component: HomeView },
-			{ path: "/dashboard", name: PATHS_NAME.DASHBOARD, component: DashboardView },
-			{ path: "/ChessRules", name: PATHS_NAME.CHESS_RULES, component: ChessRulesView },
-		],
-	},
-	{ path: "/:pathMatch(.*)*", name: PATHS_NAME.NOT_FOUND, component: PageNotFoundView },
+  {
+    path: "/",
+    redirect: "/",
+    component: LayoutView,
+    children: [
+      {path: "/login", name: "LOGIN", component: LoginView},
+      {path: "/register", name: "REGISTER", component: RegisterView},
+      {path: "/dashboard", name: "DASHBOARD", component: DashboardView },
+      {path: "/", name: "HOME", component: HomeView},
+      {path: "/ChessRules", name: "CHESS_RULES", component: ChessRulesView},
+    ],
+  },
+  { path: "/:pathMatch(.*)*", name: "NOT_FOUND", component: PageNotFoundView },
 ];
 
 const router = createRouter({
@@ -48,16 +48,16 @@ router.beforeEach((to, from, next) => {
 	const loggedIn = localStorage.getItem(KEYS.USER);
 
 	// trying to access a restricted page + not logged in
-	// redirect to login page
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    return next("/login");
+  } else {
+    if ((to.name === "LOGIN" || to.name === "REGISTER") && loggedIn) {
+      console.log("redirect to dashboard");
+      return next("/dashboard");
+    }
+    next();
+  }
 
-	if (authRequired && !loggedIn) {
-		return next("/sign-in");
-	} else {
-		if ((to.name === PATHS_NAME.LOGIN || to.name === PATHS_NAME.REGISTER) && loggedIn) {
-			console.log("redirect to dashboard");
-			return next("/dashboard");
-		}
-		next();
-	}
 });
 export default router;

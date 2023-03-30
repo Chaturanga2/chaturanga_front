@@ -22,12 +22,9 @@ export default createStore({
 	},
 	mutations: {
 		setUser(state, user: User) {
-			state.user = {
-				id: user.id,
-			};
-			const stringifiedUser = JSON.stringify(user);
-			localStorage.setItem(KEYS.USER, stringifiedUser);
-		},
+			state.user = user
+			localStorage.setItem('user', JSON.stringify(user));
+		  },
 
 		setToken(state, token: string) {
 			state.token = token;
