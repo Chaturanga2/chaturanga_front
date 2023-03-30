@@ -17,15 +17,22 @@
     <p>fdgdsgfgdfgfdgdfgdfgdfgdfgdfgdfgdfg</p>
 
     <button btn>zefefzefzefzf</button>
+
+    <ChessBoardComponent />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import ChessBoardComponent from "@/views/components/ChestBoard/ChessBoardComponent.vue";
 import socket from "../../../socketIo";
 
 export default defineComponent({
   name: "HomeView",
+
+  components: {
+    ChessBoardComponent
+  },
 
   data() {
     return {
