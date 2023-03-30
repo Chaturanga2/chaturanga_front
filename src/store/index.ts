@@ -22,15 +22,13 @@ export default createStore({
   },
   mutations: {
     setUser(state, user: User) {
-      state.user = {
-        id: user.id,
-      };
+      state.user = user
       localStorage.setItem('user', JSON.stringify(user));
     },
 
     setToken(state, token: string) {
       state.token = token;
-      localStorage.setItem('token', 'token');
+      localStorage.setItem('token', token);
     },
 
     setTheme(state, theme: Theme) {
@@ -64,13 +62,16 @@ export default createStore({
       commit('setUser', data.user);
       commit('setToken', data.token);
     },
+
+    logout({ commit }) {
+      commit('setLogout');
+    },
+
     theme({ commit }, theme: Theme) {
       commit('setTheme', theme);
     },
 
-    logout({ commit }) {
-      commit('setLogout');
-    }
+
   },
   modules: {},
 });
