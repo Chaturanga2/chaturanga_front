@@ -1,23 +1,22 @@
 <template>
-    <div class="bg-white text-dark">
-        <HeaderComponent />
-        <div class="container-fluid px-0 m-0">
-            <RouterView />
-        </div>
-        <FooterComponent />
+  <div class="bg-light text-dark">
+    <HeaderComponent class="fixed-top" />
+    <div style="min-height: 88.5vh" class="container-fluid px-0 mx-0 pt-5 mt-5">
+      <RouterView />
     </div>
+<!--    <FooterComponent />-->
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HeaderComponent from "@/views/components/templates/HeaderComponent.vue";
-import FooterComponent from "@/views/components/templates/FooterComponent.vue";
+import { defineComponent } from 'vue';
+import HeaderComponent from '@/views/components/templates/HeaderComponent.vue';
+//import FooterComponent from '@/views/components/templates/FooterComponent.vue';
 
-export default defineComponent( {
-    name: "LayoutView",
-    components: {FooterComponent, HeaderComponent},
+export default defineComponent({
+  name: 'LayoutView',
+  components: { HeaderComponent },
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
