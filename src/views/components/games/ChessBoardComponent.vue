@@ -39,6 +39,10 @@ export default defineComponent({
         };
     },
     methods: {
+
+        /**
+         * @description Init the board
+         */
         initBoard() {
             this.board = GameService.getBoard() ;
             console.log(this.board)
@@ -54,6 +58,7 @@ export default defineComponent({
             const data = JSON.stringify({x, y});
             event.dataTransfer?.setData('text/plain', data);
         },
+
         /**
          * @description Drop a pawn on the board
          * @param x
@@ -72,6 +77,12 @@ export default defineComponent({
 
             }
         },
+
+        /**
+         * @description Move a pawn on the board using pawn rules (https://en.wikipedia.org/wiki/Pawn_(chess))
+         * @param oldCell
+         * @param newCell
+         */
         allPawnMovement(oldCell: CellType, newCell: CellType) {
             switch (oldCell.piece?.symbol) {
                 case 'p':
@@ -94,6 +105,7 @@ export default defineComponent({
                     break;
             }
         },
+
         /**
          * @description Move a piece
          * @param oldCell
@@ -107,25 +119,21 @@ export default defineComponent({
                 oldCell.piece = null;
             }
         },
-        capturePiece(oldCell: CellType, newCell: CellType) {
-            // Check if there is an opponent's piece in the new cell
-            if (newCell.piece && newCell.piece.color !== oldCell.piece?.color) {
-                // Remove the captured piece from the board
-                newCell.piece = null;
-                // Move the current piece to the new cell
-                newCell.piece = oldCell.piece;
-                oldCell.piece = null;
-                return true; // Indicate that a capture occurred
-            }
-            return false; // Indicate that no capture occurred
-        },
+
+        /**
+         * @description Toggle the player turn
+         */
         togglePlayerTurn() {
+            // const success = GameService.isKingInCheck(this.board, this.currentPlayer);
+            // console.log(success);
             if (this.currentPlayer === 'w') {
                 this.currentPlayer = 'b';
+                // this.moveAI();
             } else {
                 this.currentPlayer = 'w';
             }
         },
+
         /**
          * @description Move a pawn on the board using pawn rules (https://en.wikipedia.org/wiki/Pawn_(chess))
          * @param oldCell
@@ -133,7 +141,7 @@ export default defineComponent({
          */
         pawnMovement(oldCell: CellType, newCell: CellType) {
             const success = GameService.movePawn(this.board,oldCell, newCell,  this.currentPlayer);
-            console.log(success);
+
             if (success) {
                 this.movePiece(oldCell, newCell);
                 this.togglePlayerTurn();
@@ -142,7 +150,7 @@ export default defineComponent({
 
         rookMovement(oldCell: CellType, newCell: CellType) {
             const success = GameService.moveRook(this.board,oldCell, newCell,  this.currentPlayer);
-            console.log(success);
+
             if (success) {
                 this.movePiece(oldCell, newCell);
                 this.togglePlayerTurn();
@@ -151,7 +159,7 @@ export default defineComponent({
 
         knightMovement(oldCell: CellType, newCell: CellType) {
             const success = GameService.moveKnight(this.board,oldCell, newCell,  this.currentPlayer);
-            console.log(success);
+
             if (success) {
                 this.movePiece(oldCell, newCell);
                 this.togglePlayerTurn();
@@ -160,7 +168,7 @@ export default defineComponent({
 
         bishopMovement(oldCell: CellType, newCell: CellType) {
             const success = GameService.moveBishop(this.board,oldCell, newCell,  this.currentPlayer);
-            console.log(success);
+
             if (success) {
                 this.movePiece(oldCell, newCell);
                 this.togglePlayerTurn();
@@ -169,7 +177,7 @@ export default defineComponent({
 
         queenMovement(oldCell: CellType, newCell: CellType) {
             const success = GameService.moveQueen(this.board,oldCell, newCell,  this.currentPlayer);
-            console.log(success);
+
             if (success) {
                 this.movePiece(oldCell, newCell);
                 this.togglePlayerTurn();
@@ -178,14 +186,13 @@ export default defineComponent({
 
         kingMovement(oldCell: CellType, newCell: CellType) {
             const success = GameService.moveKing(this.board,oldCell, newCell,  this.currentPlayer);
-            console.log(success);
             if (success) {
                 this.movePiece(oldCell, newCell);
                 this.togglePlayerTurn();
             }
         },
 
-        
+
     },
     mounted() {
         this.initBoard();

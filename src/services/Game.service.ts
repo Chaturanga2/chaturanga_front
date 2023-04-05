@@ -5,7 +5,7 @@ type Piece = {
     moved: boolean,
 } | null;
 
-export type CellType = {
+type CellType = {
     x: number,
     y: string,
     piece: Piece,
@@ -61,13 +61,6 @@ class GameService {
             this.board.push(row);
         }
         return this.board;
-    }
-
-    // get player turn (white or black)
-    public togglePlayerTurn(currentPlayer: string) {
-        if (currentPlayer === 'w') {
-            return 'b';
-        } return 'w';
     }
 
     public movePawn(board: CellType[][], oldCell: CellType, newCell: CellType, currentPlayer: string): boolean {
