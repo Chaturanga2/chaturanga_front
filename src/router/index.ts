@@ -9,6 +9,7 @@ import LoginView from "@/views/pages/authentication/LoginView.vue";
 import RegisterView from "@/views/pages/register/RegisterView.vue";
 import ChessRulesView from "@/views/pages/Rules/ChessRulesView.vue";
 import DashboardView from "@/views/pages/Dashboard/DashboardView.vue";
+import GameView from "@/views/game/GameView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,6 +22,7 @@ const routes: Array<RouteRecordRaw> = [
       {path: "/dashboard", name: PATHS_NAME.DASHBOARD, component: DashboardView },
       {path: "/", name: PATHS_NAME.HOME, component: HomeView},
       {path: "/ChessRules", name: PATHS_NAME.CHESS_RULES, component: ChessRulesView},
+        {path: "/game", name: "GAME", component: GameView}
     ],
   },
   { path: "/:pathMatch(.*)*", name: PATHS_NAME.NOT_FOUND, component: PageNotFoundView },
