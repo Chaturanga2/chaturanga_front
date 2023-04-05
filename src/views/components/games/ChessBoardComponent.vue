@@ -72,6 +72,10 @@ export default defineComponent({
                 const oldCell = this.board[oldX].find(cell => cell.y === oldY);
                 const newCell = this.board[x].find(cell => cell.y === y);
                 if (oldCell && newCell) {
+                    if (newCell.piece?.symbol === 'k') {
+                        alert('You win !');
+                        return;
+                    }
                     this.allPawnMovement(oldCell, newCell);
                 }
 
@@ -113,6 +117,7 @@ export default defineComponent({
          * @rule : A piece cannot move to a square that is occupied by a friendly piece.
          */
         movePiece(oldCell: CellType, newCell: CellType) {
+            console.log(oldCell.piece?.symbol, newCell.piece?.symbol)
             if (oldCell.piece && newCell.piece?.color !== oldCell.piece.color) {
 
                 newCell.piece = oldCell.piece;

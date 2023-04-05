@@ -247,5 +247,31 @@ class GameService {
         return true;
     }
 
+    // Vérifier si le roi est en échec
+    // public isKingInCheck(board: CellType[][], color: string): boolean {
+    //     // Trouver la position du roi
+    //     let kingPosition: null | CellType = null;
+    //     for (let i = 0; i < board.length; i++) {
+    //         for (let j = 0; j < board[i].length; j++) {
+    //             if (board[i][j].piece && board[i][j]?.piece?.symbol === 'k' && board[i][j]?.piece?.color === color) {
+    //                 kingPosition = board[i][j];
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //
+    //     // Vérifier si le roi est en échec
+    //     for (let i = 0; i < board.length; i++) {
+    //         for (let j = 0; j < board[i].length; j++) {
+    //             if (board[i][j].piece && board[i][j]?.piece?.color !== color) {
+    //                 if (this.movePiece(board, board[i][j], kingPosition, board[i][j]?.piece?.color)) {
+    //                     return true;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
+
 }
 export default new GameService();
