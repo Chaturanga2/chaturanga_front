@@ -21,7 +21,7 @@ export default createStore<StoreState>({
     getters: {
         is_authenticated: (state) => {
             console.log(state.token);
-            return state.token !== "";
+            return state.token !== null;
         },
     },
 
