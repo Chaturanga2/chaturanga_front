@@ -1,77 +1,73 @@
-import { createStore } from 'vuex';
-import { User } from '@/types/users';
-import { UserLoginResponse } from '@/types/users';
-import { Theme, Logo, Navbar } from '@/types/themes';
+import {createStore} from "vuex";
+import {KEYS, ACTIONS_TYPE} from "@/constants";
+import {Theme} from "@/types/themes";
+import {User, UserLoginResponse} from "@/types/users";
 
 export default createStore({
-  state: {
-    //---------------- User ----------------²
-    user: {} as User,
-    token: '' as string,
+    state: {
+        //---------------- User ----------------²
+        user: {} as User,
+        token: "" as string,
 
-    //---------------- Theme ----------------²
-    theme: {} as Theme,
-  },
-  getters: {
-    theme: (state) => state.theme,
-    user: (state) => state.user,
-    is_authenticated: (state) => {
-      console.log(state.token)
-        return state.token !== '';
-    }
-  },
-  mutations: {
-    setUser(state, user: User) {
-      state.user = {
-        id: user.id,
-      };
-      localStorage.setItem('user', JSON.stringify(user));
+        //---------------- Theme ----------------²
+        theme: {} as Theme,
     },
+    getters: {
+        theme: (state) => state.theme,
+        user: (state) => state.user,
+        is_authenticated: (state) => {
+            console.log(state.token);
+            return state.token !== "";
+        },
+    },
+    mutations: {
+        setUser(state, user: User) {
+            state.user = user
+            localStorage.setItem('user', JSON.stringify(user));
+        },
 
-    setToken(state, token: string) {
-      state.token = token;
-      localStorage.setItem('token', 'token');
-    },
+        setToken(state, token: string) {
+            state.token = token;
+            localStorage.setItem(KEYS.USER_TOKEN, KEYS.USER_TOKEN);
+        },
 
-    setTheme(state, theme: Theme) {
-      state.theme = theme;
-      localStorage.setItem('theme', JSON.stringify(theme));
-    },
+        setTheme(state, theme: Theme) {
+            state.theme = theme;
+            const stringifiedUserTheme = JSON.stringify(theme);
+            localStorage.setItem(KEYS.USER_THEME, stringifiedUserTheme);
+        },
 
-    setLogout(state) {
-        state.user = {} as User;
-        state.token = '';
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        console.log(state.token)
-    },
+        setLogout(state) {
+            state.user = {} as User;
+            state.token = "";
+            localStorage.removeItem(KEYS.USER);
+            localStorage.removeItem(KEYS.USER_TOKEN);
+            console.log(state.token);
+        },
 
-    // Mutations are used to set the state values after page refresh
-    initializeStore(state) {
-      if (localStorage.getItem('user')) {
-        state.user = JSON.parse(localStorage.getItem('user') || '{}');
-      }
-      if (localStorage.getItem('token')) {
-        state.token = localStorage.getItem('token') || '';
-      }
-      if (localStorage.getItem('theme')) {
-        state.theme = JSON.parse(localStorage.getItem('theme') || '{}');
-      }
-    },
-  },
-  actions: {
-    login({ commit }, data: UserLoginResponse) {
-      console.log(data);
-      //commit('setUser', data.user);
-      commit('setToken', data.token);
-    },
-    theme({ commit }, theme: Theme) {
-      commit('setTheme', theme);
-    },
+        // Mutations are used to set the state values after page refresh
+        initializeStore(state) {
+            const user = localStorage.getItem(KEYS.USER);
+            const userToken = localStorage.getItem(KEYS.USER_TOKEN);
+            const userTheme = localStorage.getItem(KEYS.USER_THEME);
 
-    logout({ commit }) {
-      commit('setLogout');
-    }
-  },
-  modules: {},
+            state.user = user ? JSON.parse(user) : state.user;
+            state.token = userToken ? userToken : state.token;
+            state.theme = userTheme ? JSON.parse(userTheme) : state.theme;
+        },
+    },
+    actions: {
+        login({commit}, data: UserLoginResponse) {
+            commit(ACTIONS_TYPE.SET_USER, data.user);
+            commit(ACTIONS_TYPE.SET_USER_TOKEN, data.token);
+        },
+        theme({commit}, theme: Theme) {
+            commit(ACTIONS_TYPE.SET_USER_THEME, theme);
+        },
+
+        logout({commit}) {
+            commit(ACTIONS_TYPE.SET_LOGOUT);
+        },
+    },
+    modules: {},
 });

@@ -2,20 +2,20 @@ import { routeLocationKey } from "vue-router";
 
 export type User = {
     id?: number;
-    username?: string;
-    email?: string;
-    password?: string;
-    confirmed?: boolean;
-    phone?: string;
-    is_off?: boolean;
-    role?: string;
+    first_name?: string,
+    last_name?: string,
+    username?: string,
+    email?: string,
+    password?: string,
+    password_confirmation?: string,
+    level?: string
 };
 
 export type UserLoginResponse = {
     message?: string;
     user?: User;
     token?: string;
-    refresh_token?: string;
+    refresh_token: string;
 };
 
 export type UserStats = {
