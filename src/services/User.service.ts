@@ -11,7 +11,6 @@ class UserService {
 
     async login(user: User): Promise<UserLoginResponse>{
         const {data} : {data: UserLoginResponse} = await axiosInstance.post('/auth/login', user);
-        console.log(data)
         return data;
     }
 }

@@ -1,3 +1,4 @@
+import { routeLocationKey } from "vue-router";
 
 export type User = {
     id?: number;
@@ -16,3 +17,9 @@ export type UserLoginResponse = {
     token?: string;
     refresh_token: string;
 };
+
+export type UserStats = {
+    role?: string;
+    rank?: string;
+    stat?: JSON;
+}
