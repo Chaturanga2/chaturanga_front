@@ -2,9 +2,14 @@
     <div class="container-fluid m-0 p-0">
         <nav :class="theme.navbar.navbar_bg" class="navbar navbar-expand-lg">
             <div class="container-fluid">
+                <router-link
+                    :class="theme.navbar.navbar_color"
+                    class="nav-link"
+                    :to="{ name: PATHS_NAME.HOME }">
                 <a class="navbar-brand" :class="theme.navbar.navbar_color" href="#"
                 >Chaturanga <img src="../../../assets/images/chessLogo.png" alt=""
                 /></a>
+                </router-link>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -16,12 +21,13 @@
                 >
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a
                                 class="nav-link dropdown-toggle btn btn-dark"
-                                href="#"
+                                href="/"
                                 role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
@@ -72,7 +78,7 @@
                                 <router-link
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
-                                    :to="{ name: PATHS_NAME.HOME }"
+                                    :to="{ name: PATHS_NAME.DASHBOARD }"
                                 >My Account
                                 </router-link>
                             </li>
