@@ -26,8 +26,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import {CellType} from "@/types/chess";
+import {CellType, GameSocketEmitType} from "@/types/chess";
 import GameService from '@/services/Game.service';
+import socket from "@/socketIo";
 
 export default defineComponent({
     name: "ChessBoardComponent",
@@ -37,7 +38,9 @@ export default defineComponent({
             x_axe: [1, 2, 3, 4, 5, 6, 7, 8],
             board: [] as CellType[][],
             currentPlayer: "w",
-            connection: {} as any,
+            success: false,
+            first_player_history: [] as string[],
+            second_player_history: [] as string[],
         };
     },
     methods: {
@@ -47,7 +50,6 @@ export default defineComponent({
          */
         initBoard() {
             this.board = GameService.getBoard() ;
-            console.log(this.board)
         },
 
         /**
@@ -92,22 +94,34 @@ export default defineComponent({
         allPawnMovement(oldCell: CellType, newCell: CellType) {
             switch (oldCell.piece?.symbol) {
                 case 'p':
-                    this.pawnMovement(oldCell, newCell);
+                    socket.emit("movePiece", {pieceName: "pawn", board: this.board, oldCell: oldCell, newCell: newCell, currentPlayer: this.currentPlayer});
+                    if (this.success)
+                        this.pawnMovement(oldCell, newCell);
                     break;
                 case 'r':
-                    this.rookMovement(oldCell, newCell);
+                    socket.emit("movePiece", "rock", oldCell, newCell);
+                    if (this.success)
+                        this.rookMovement(oldCell, newCell);
                     break;
                 case 'n':
-                    this.knightMovement(oldCell, newCell);
+                    socket.emit("movePiece", "knight", oldCell, newCell);
+                    if (this.success)
+                        this.knightMovement(oldCell, newCell);
                     break;
                 case 'b':
-                    this.bishopMovement(oldCell, newCell);
+                    socket.emit("movePiece", "bishop", oldCell, newCell);
+                    if (this.success)
+                        this.bishopMovement(oldCell, newCell);
                     break;
                 case 'q':
-                    this.queenMovement(oldCell, newCell);
+                    socket.emit("movePiece", "queen", oldCell, newCell);
+                    if (this.success)
+                        this.queenMovement(oldCell, newCell);
                     break;
                 case 'k':
-                    this.kingMovement(oldCell, newCell);
+                    socket.emit("movePiece", "king", oldCell, newCell);
+                    if (this.success)
+                        this.kingMovement(oldCell, newCell);
                     break;
             }
         },
@@ -119,9 +133,8 @@ export default defineComponent({
          * @rule : A piece cannot move to a square that is occupied by a friendly piece.
          */
         movePiece(oldCell: CellType, newCell: CellType) {
-            console.log(oldCell.piece?.symbol, newCell.piece?.symbol)
             if (oldCell.piece && newCell.piece?.color !== oldCell.piece.color) {
-
+                this.board[newCell.x][this.y_axe.indexOf(newCell.y)].piece = oldCell.piece;
                 newCell.piece = oldCell.piece;
                 oldCell.piece = null;
             }
@@ -131,8 +144,6 @@ export default defineComponent({
          * @description Toggle the player turn
          */
         togglePlayerTurn() {
-            // const success = GameService.isKingInCheck(this.board, this.currentPlayer);
-            // console.log(success);
             if (this.currentPlayer === 'w') {
                 this.currentPlayer = 'b';
                 // this.moveAI();
@@ -199,11 +210,25 @@ export default defineComponent({
             }
         },
 
-
     },
     mounted() {
-        this.initBoard();
-    }
+        if (this.board.length === 0) {
+            console.log("Board is empty, initializing board");
+            this.initBoard();
+        }
+        socket.on("movePiece", (newBoard: GameSocketEmitType) => {
+            console.log("Position data received from server:", newBoard);
+            this.board = newBoard.board;
+            this.currentPlayer = newBoard.currentPlayer;
+            if (newBoard.shot) {
+                if (this.currentPlayer === 'b') {
+                    this.first_player_history.push(newBoard.shot);
+                } else {
+                    this.second_player_history.push(newBoard.shot);
+                }
+            }
+        });
+    },
 });
 </script>
 

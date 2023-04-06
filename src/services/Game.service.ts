@@ -25,43 +25,161 @@ class GameService {
     public readonly y_axe: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     public readonly board: CellType[][] = [];
 
-    // init chessboard with pieces
-    public getBoard() {
+
+    public generatePieces(): Array<{
+        x: number;
+        y: string;
+        s: string;
+        color: string;
+        image: string;
+    }> {
         const pieces = [];
         for (let position = 0; position < 2; position++) {
             const type = position === 0 ? 'w' : 'b';
             const x_pos = position === 0 ? 0 : 7;
 
             pieces.push(
-                {x: x_pos, y: 'a', s: 'r', color: type, image: require(`@/assets/pions/rook_${type}.png`)},
-                {x: x_pos, y: 'b', s: 'n', color: type, image: require(`@/assets/pions/knight_${type}.png`)},
-                {x: x_pos, y: 'c', s: 'b', color: type, image: require(`@/assets/pions/bishop_${type}.png`)},
-                {x: x_pos, y: 'd', s: 'q', color: type, image: require(`@/assets/pions/queen_${type}.png`)},
-                {x: x_pos, y: 'e', s: 'k', color: type, image: require(`@/assets/pions/king_${type}.png`)},
-                {x: x_pos, y: 'f', s: 'b', color: type, image: require(`@/assets/pions/bishop_${type}.png`)},
-                {x: x_pos, y: 'g', s: 'n', color: type, image: require(`@/assets/pions/knight_${type}.png`)},
-                {x: x_pos, y: 'h', s: 'r', color: type, image: require(`@/assets/pions/rook_${type}.png`)},
+                {
+                    x: x_pos,
+                    y: 'a',
+                    s: 'r',
+                    color: type,
+                    image: require(`@/assets/pions/rook_${type}.png`),
+                },
+                {
+                    x: x_pos,
+                    y: 'b',
+                    s: 'n',
+                    color: type,
+                    image: require(`@/assets/pions/knight_${type}.png`),
+                },
+                {
+                    x: x_pos,
+                    y: 'c',
+                    s: 'b',
+                    color: type,
+                    image: require(`@/assets/pions/bishop_${type}.png`),
+                },
+                {
+                    x: x_pos,
+                    y: 'd',
+                    s: 'q',
+                    color: type,
+                    image: require(`@/assets/pions/queen_${type}.png`),
+                },
+                {
+                    x: x_pos,
+                    y: 'e',
+                    s: 'k',
+                    color: type,
+                    image: require(`@/assets/pions/king_${type}.png`),
+                },
+                {
+                    x: x_pos,
+                    y: 'f',
+                    s: 'b',
+                    color: type,
+                    image: require(`@/assets/pions/bishop_${type}.png`),
+                },
+                {
+                    x: x_pos,
+                    y: 'g',
+                    s: 'n',
+                    color: type,
+                    image: require(`@/assets/pions/knight_${type}.png`),
+                },
+                {
+                    x: x_pos,
+                    y: 'h',
+                    s: 'r',
+                    color: type,
+                    image: require(`@/assets/pions/rook_${type}.png`),
+                },
             );
         }
         for (let i = 0; i < 8; i++) {
-            pieces.push({x: 1, y: this.y_axe[i], s: 'p', color: 'w', image: require('@/assets/pions/pawn_w.png')});
-            pieces.push({x: 6, y: this.y_axe[i], s: 'p', color: 'b', image: require('@/assets/pions/pawn_b.png')});
+            pieces.push(
+                {
+                    x: 1,
+                    y: this.y_axe[i],
+                    s: 'p',
+                    color: 'w',
+                    image: require('@/assets/pions/pawn_w.png'),
+                },
+                {
+                    x: 6,
+                    y: this.y_axe[i],
+                    s: 'p',
+                    color: 'b',
+                    image: require('@/assets/pions/pawn_b.png'),
+                },
+            );
         }
 
+        return pieces;
+    }
+
+    public getBoard(): CellType[][] {
         for (let i = 0; i < this.x_axe.length; i++) {
             const row: CellType[] = [];
             for (let j = 0; j < this.y_axe.length; j++) {
-                const cell: CellType = {x: i, y: this.y_axe[j], piece: null};
-                const piece = pieces.find(p => p.x === i && p.y === this.y_axe[j]);
+                const cell: CellType = { x: i, y: this.y_axe[j], piece: null };
+                const piece = this.generatePieces().find(
+                    (p) => p.x === i && p.y === this.y_axe[j],
+                );
                 if (piece) {
-                    cell.piece = {image: piece.image, symbol: piece.s, color: piece.color, moved: false};
+                    cell.piece = {
+                        moved: false,
+                        image: piece.image,
+                        symbol: piece.s,
+                        color: piece.color,
+                    };
                 }
                 row.push(cell);
             }
             this.board.push(row);
         }
+        console.log(this.board);
         return this.board;
     }
+
+    // init chessboard with pieces
+    // public getBoard() {
+    //     const pieces = [];
+    //     for (let position = 0; position < 2; position++) {
+    //         const type = position === 0 ? 'w' : 'b';
+    //         const x_pos = position === 0 ? 0 : 7;
+    //
+    //         pieces.push(
+    //             {x: x_pos, y: 'a', s: 'r', color: type, image: require(`@/assets/pions/rook_${type}.png`)},
+    //             {x: x_pos, y: 'b', s: 'n', color: type, image: require(`@/assets/pions/knight_${type}.png`)},
+    //             {x: x_pos, y: 'c', s: 'b', color: type, image: require(`@/assets/pions/bishop_${type}.png`)},
+    //             {x: x_pos, y: 'd', s: 'q', color: type, image: require(`@/assets/pions/queen_${type}.png`)},
+    //             {x: x_pos, y: 'e', s: 'k', color: type, image: require(`@/assets/pions/king_${type}.png`)},
+    //             {x: x_pos, y: 'f', s: 'b', color: type, image: require(`@/assets/pions/bishop_${type}.png`)},
+    //             {x: x_pos, y: 'g', s: 'n', color: type, image: require(`@/assets/pions/knight_${type}.png`)},
+    //             {x: x_pos, y: 'h', s: 'r', color: type, image: require(`@/assets/pions/rook_${type}.png`)},
+    //         );
+    //     }
+    //     for (let i = 0; i < 8; i++) {
+    //         pieces.push({x: 1, y: this.y_axe[i], s: 'p', color: 'w', image: require('@/assets/pions/pawn_w.png')});
+    //         pieces.push({x: 6, y: this.y_axe[i], s: 'p', color: 'b', image: require('@/assets/pions/pawn_b.png')});
+    //     }
+    //
+    //     for (let i = 0; i < this.x_axe.length; i++) {
+    //         const row: CellType[] = [];
+    //         for (let j = 0; j < this.y_axe.length; j++) {
+    //             const cell: CellType = {x: i, y: this.y_axe[j], piece: null};
+    //             const piece = pieces.find(p => p.x === i && p.y === this.y_axe[j]);
+    //             if (piece) {
+    //                 cell.piece = {image: piece.image, symbol: piece.s, color: piece.color, moved: false};
+    //             }
+    //             row.push(cell);
+    //         }
+    //         this.board.push(row);
+    //     }
+    //     return this.board;
+    // }
 
     public movePawn(board: CellType[][], oldCell: CellType, newCell: CellType, currentPlayer: string): boolean {
 

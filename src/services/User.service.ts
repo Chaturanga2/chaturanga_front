@@ -14,7 +14,7 @@ class UserService {
         return data;
     }
 
-    async getUserProfile(id: string): Promise<User> {
+    async getUserProfile(id: object): Promise<User> {
         const { data }: { data: User } = await axiosInstance.get(`/users/${id}`);
         return data;
     }

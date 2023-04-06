@@ -276,9 +276,7 @@
 
 <script lang="ts">
 import {Form, Field, ErrorMessage} from 'vee-validate';
-import {FormValidationService} from '@/services/FormValidation.service'
-import UserService from '@/services/User.service';
-import {UserLoginResponse, UserType} from '@/types/users';
+import {FormValidationService} from '@/services/FormValidation.service';
 
 export default {
     name: "DashboardView",
@@ -331,20 +329,7 @@ export default {
             ],
         };
     },
-    methods:{
-        async getUser(): Promise<UserType> {
-            try {
-                const response = await UserService.getUserProfile(this.$store.getters.userID);
-                console.log(response);
-                this.userData = response.data;
-            } catch (error) {
-                console.error("Error getting user profile:", error);
-            }            
-        }
-    },
-    mounted(){
-        this.getUser();
-    },
+
 }
 </script>
 
