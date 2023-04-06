@@ -12,7 +12,7 @@
               <div class="contant_box_404">
                 <h3 class="h2">Look like you're lost</h3>
                 <p>the page you are looking for not avaible!</p>
-                <router-link :to="{ name: 'HOME' }" class="link_404"
+                <router-link  :to="{ name: PATHS_NAME.HOME }" class="link_404"
                   >Go to Home</router-link
                 >
               </div>
@@ -26,8 +26,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { PATHS_NAME } from "../constants";
 export default defineComponent({
   name: "PageNotFoundView",
+  data() {
+    return {PATHS_NAME}
+  }
 });
 </script>
 
