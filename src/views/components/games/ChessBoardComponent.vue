@@ -49,7 +49,7 @@ export default defineComponent({
          * @description Init the board
          */
         initBoard() {
-            this.board = GameService.getBoard() ;
+            this.board = GameService.getBoard();
         },
 
         /**
@@ -86,6 +86,16 @@ export default defineComponent({
             }
         },
 
+        emitSocket(pieceName: string, oldCell: CellType, newCell: CellType) {
+            socket.emit("movePiece", {
+                pieceName: pieceName,
+                board: this.board,
+                oldCell: oldCell,
+                newCell: newCell,
+                currentPlayer: this.currentPlayer
+            });
+        },
+
         /**
          * @description Move a pawn on the board using pawn rules (https://en.wikipedia.org/wiki/Pawn_(chess))
          * @param oldCell
@@ -94,32 +104,32 @@ export default defineComponent({
         allPawnMovement(oldCell: CellType, newCell: CellType) {
             switch (oldCell.piece?.symbol) {
                 case 'p':
-                    socket.emit("movePiece", {pieceName: "pawn", board: this.board, oldCell: oldCell, newCell: newCell, currentPlayer: this.currentPlayer});
+                    this.emitSocket("pawn", oldCell, newCell);
                     if (this.success)
                         this.pawnMovement(oldCell, newCell);
                     break;
                 case 'r':
-                    socket.emit("movePiece", "rock", oldCell, newCell);
+                    this.emitSocket("rook", oldCell, newCell);
                     if (this.success)
                         this.rookMovement(oldCell, newCell);
                     break;
                 case 'n':
-                    socket.emit("movePiece", "knight", oldCell, newCell);
+                    this.emitSocket("knight", oldCell, newCell);
                     if (this.success)
                         this.knightMovement(oldCell, newCell);
                     break;
                 case 'b':
-                    socket.emit("movePiece", "bishop", oldCell, newCell);
+                    this.emitSocket("bishop", oldCell, newCell);
                     if (this.success)
                         this.bishopMovement(oldCell, newCell);
                     break;
                 case 'q':
-                    socket.emit("movePiece", "queen", oldCell, newCell);
+                    this.emitSocket("queen", oldCell, newCell);
                     if (this.success)
                         this.queenMovement(oldCell, newCell);
                     break;
                 case 'k':
-                    socket.emit("movePiece", "king", oldCell, newCell);
+                    this.emitSocket("king", oldCell, newCell);
                     if (this.success)
                         this.kingMovement(oldCell, newCell);
                     break;
@@ -158,7 +168,7 @@ export default defineComponent({
          * @param newCell
          */
         pawnMovement(oldCell: CellType, newCell: CellType) {
-            const success = GameService.movePawn(this.board,oldCell, newCell,  this.currentPlayer);
+            const success = GameService.movePawn(this.board, oldCell, newCell, this.currentPlayer);
 
             if (success) {
                 this.movePiece(oldCell, newCell);
@@ -167,7 +177,7 @@ export default defineComponent({
         },
 
         rookMovement(oldCell: CellType, newCell: CellType) {
-            const success = GameService.moveRook(this.board,oldCell, newCell,  this.currentPlayer);
+            const success = GameService.moveRook(this.board, oldCell, newCell, this.currentPlayer);
 
             if (success) {
                 this.movePiece(oldCell, newCell);
@@ -176,7 +186,7 @@ export default defineComponent({
         },
 
         knightMovement(oldCell: CellType, newCell: CellType) {
-            const success = GameService.moveKnight(this.board,oldCell, newCell,  this.currentPlayer);
+            const success = GameService.moveKnight(this.board, oldCell, newCell, this.currentPlayer);
 
             if (success) {
                 this.movePiece(oldCell, newCell);
@@ -185,7 +195,7 @@ export default defineComponent({
         },
 
         bishopMovement(oldCell: CellType, newCell: CellType) {
-            const success = GameService.moveBishop(this.board,oldCell, newCell,  this.currentPlayer);
+            const success = GameService.moveBishop(this.board, oldCell, newCell, this.currentPlayer);
 
             if (success) {
                 this.movePiece(oldCell, newCell);
@@ -194,7 +204,7 @@ export default defineComponent({
         },
 
         queenMovement(oldCell: CellType, newCell: CellType) {
-            const success = GameService.moveQueen(this.board,oldCell, newCell,  this.currentPlayer);
+            const success = GameService.moveQueen(this.board, oldCell, newCell, this.currentPlayer);
 
             if (success) {
                 this.movePiece(oldCell, newCell);
@@ -203,7 +213,7 @@ export default defineComponent({
         },
 
         kingMovement(oldCell: CellType, newCell: CellType) {
-            const success = GameService.moveKing(this.board,oldCell, newCell,  this.currentPlayer);
+            const success = GameService.moveKing(this.board, oldCell, newCell, this.currentPlayer);
             if (success) {
                 this.movePiece(oldCell, newCell);
                 this.togglePlayerTurn();
