@@ -23,7 +23,7 @@
                             v-for="(friend, index) in friends" :key="`friend-${index}`"
                             class="border d-flex align-items-center justify-content-between p-3">
                             <div>
-                                <img src="../../../assets/images/users/avatar.png" alt="">
+                                <img :src="friends[0].avatar" alt="">
                                 <span class="ms-4 text-uppercase fw-bold">{{ friend.name }}</span>
                             </div>
                             <div>
@@ -50,7 +50,7 @@
                             v-for="(friend, index) in friendRequests" :key="`friend-request-${index}`"
                             class="border d-flex align-items-center justify-content-between p-3">
                             <div>
-                                <img src="../../../assets/images/users/avatar.png" alt="">
+                                <img :src="friends[1].avatar" alt="">
                                 <span class="ms-4 text-uppercase fw-bold">{{ friend.name }}</span>
                             </div>
                             <div>
@@ -78,7 +78,7 @@
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <div style="height: 200px;">
-                            <img class="w-75 h-100 rounded-circle mb-2" src="../../../assets/images/users/avatar.png"
+                            <img class="w-75 h-100 rounded-circle mb-2" :src="friends[2].avatar"
                                  alt="">
                         </div>
                         <!-- Profile picture help block-->
@@ -165,7 +165,7 @@
                         <!-- Profile picture image-->
                         <div style="height: 200px;">
                             <img class="w-75 h-100 rounded-circle mb-2"
-                                 src="../../../assets/images/users/avatar.png" alt="">
+                                 :src="friends[3].avatar" alt="">
                         </div>
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">Taille d'image inferieur 5 MB</div>
@@ -202,11 +202,6 @@
                                     <input class="form-control" id="inputOrgName" type="text"
                                            placeholder="Enter your organization name" value="DEBUTANT" disabled>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLocation">PAYS</label>
-                                    <input class="form-control" id="inputLocation" type="text"
-                                           placeholder="Enter your location" value="France">
-                                </div>
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">ADRESSE EMAIL</label>
@@ -227,13 +222,6 @@
                                     <label class="small mb-1" for="inputBirthday">CONFIRMATION</label>
                                     <input class="form-control" id="inputBirthday" type="text" name="birthday"
                                            placeholder="Enter your birthday" value="********">
-                                </div>
-                            </div>
-                            <div class="row mb-5">
-                                <div class="col">
-                                    <label class="small mb-1" for="inputBiography">BIOGRAPHY</label>
-                                    <textarea class="form-control" name="biography" id="inputBiography"
-                                              rows="3"></textarea>
                                 </div>
                             </div>
                             <button class="btn btn-primary" type="button">Mettre à jour</button>
