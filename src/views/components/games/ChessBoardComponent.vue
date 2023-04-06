@@ -28,14 +28,16 @@
 import {defineComponent} from "vue";
 import {CellType} from "@/types/chess";
 import GameService from '@/services/Game.service';
+
 export default defineComponent({
     name: "ChessBoardComponent",
     data() {
         return {
-            y_axe: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
+            y_axe: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', ''],
             x_axe: [1, 2, 3, 4, 5, 6, 7, 8],
             board: [] as CellType[][],
             currentPlayer: "w",
+            connection: {} as any,
         };
     },
     methods: {
