@@ -4,18 +4,18 @@
     <div style="min-height: 88.5vh" class="container-fluid px-0 mx-0 pt-5 mt-5">
       <RouterView />
     </div>
-<!--    <FooterComponent />-->
+    <FooterComponent></FooterComponent>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import HeaderComponent from '@/views/components/templates/HeaderComponent.vue';
-//import FooterComponent from '@/views/components/templates/FooterComponent.vue';
+import FooterComponent from '@/views/components/templates/FooterComponent.vue';
 
 export default defineComponent({
   name: 'LayoutView',
-  components: { HeaderComponent },
+  components: { HeaderComponent, FooterComponent },
 });
 </script>
 
