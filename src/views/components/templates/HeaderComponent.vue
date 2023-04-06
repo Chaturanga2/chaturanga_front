@@ -156,12 +156,12 @@ export default defineComponent({
     logout() {
       this.$store.dispatch('logout');
       this.$router.push({ name: 'HOME' }); // Pour l'instant on redirige vers la page d'accueil
-    },
+    }
   },
   mounted() {
-    if (this.$store.getters.theme) {
-      this.theme = this.$store.getters.theme;
-    }
+    if (this.$store.state.theme) {
+            this.theme = this.$store.state.theme;
+        }
   },
 });
 </script>

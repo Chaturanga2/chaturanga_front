@@ -178,30 +178,72 @@
                     value="bazzz"
                   />
                 </div>
-                <div class="col-md-6">
-                  <label class="small mb-1" for="inputLastName">PRENOM</label>
-                  <input
-                    class="form-control"
-                    id="inputLastName"
-                    type="text"
-                    placeholder="Enter your last name"
-                    value="bozzz"
-                  />
-                </div>
-              </div>
-              <div class="row gx-3 mb-3">
-                <div class="col-md-6">
-                  <label class="small mb-1" for="inputOrgName"
-                    >NIVEAU DU JOUEUR</label
-                  >
-                  <input
-                    class="form-control"
-                    id="inputOrgName"
-                    type="text"
-                    placeholder="Enter your organization name"
-                    value="DEBUTANT"
-                    disabled
-                  />
+            </div>
+            <div class="col-xl-8">
+                <div class="card mb-4">
+                    <div class="card-header">detail profile</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">PSEUDO</label>
+                                <input class="form-control" id="inputUsername" type="text"
+                                       placeholder="Enter your username" value="bizzz">
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">NOM</label>
+                                    <input class="form-control" id="inputFirstName" type="text"
+                                           placeholder="Enter your first name" value="bazzz">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLastName">PRENOM</label>
+                                    <input class="form-control" id="inputLastName" type="text"
+                                           placeholder="Enter your last name" value="bozzz">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">NIVEAU DU JOUEUR</label>
+                                    <input class="form-control" id="inputOrgName" type="text"
+                                           placeholder="Enter your organization name" value="DEBUTANT" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">PAYS</label>
+                                    <input class="form-control" id="inputLocation" type="text"
+                                           placeholder="Enter your location" value="France">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">ADRESSE EMAIL</label>
+                                <input class="form-control" id="inputEmailAddress" type="email"
+                                       placeholder="Enter your email address" value="name@example.com">
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPhone">MOT DE PASSE</label>
+                                    <input :disabled="true" class="form-control" id="inputPhone" type="tel"
+                                           placeholder="Enter your phone number" value="********">
+                                </div>
+                                <div class="col-md-6">
+                                    <br>
+                                    <button class="btn btn-outline-primary">MODIFIER LE MOT DE PASSE</button>
+                                </div>
+                                <div v-if="false" class="col-md-6">
+                                    <label class="small mb-1" for="inputBirthday">CONFIRMATION</label>
+                                    <input class="form-control" id="inputBirthday" type="text" name="birthday"
+                                           placeholder="Enter your birthday" value="********">
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col">
+                                    <label class="small mb-1" for="inputBiography">BIOGRAPHY</label>
+                                    <textarea class="form-control" name="biography" id="inputBiography"
+                                              rows="3"></textarea>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="button">Mettre à jour</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputLocation">PAYS</label>

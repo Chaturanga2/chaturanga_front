@@ -4,10 +4,10 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-// import './themes/Gryffondor.scss';
-// import './themes/Serdaigle.scss';
-// import './themes/Poufsouffle.scss';
-// import './themes/Serpentard.scss';
+import './themes/Gryffondor.scss';
+import './themes/Serdaigle.scss';
+import './themes/Poufsouffle.scss';
+import './themes/Serpentard.scss';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Toaster from '@meforma/vue-toaster';
