@@ -107,8 +107,10 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
-import { PATHS_NAME } from '@/constants';
+//import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
+import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "../../../helpers/defaultTheme";
+//import { PATHS_NAME } from '@/constants';
+import { PATHS_NAME } from '../../../constants';
 
 export default defineComponent({
     name: 'HeaderComponent',
@@ -155,8 +157,8 @@ export default defineComponent({
         },
     },
     mounted() {
-        if (this.$store.getters.theme) {
-            this.theme = this.$store.getters.theme;
+        if (this.$store.state.theme) {
+            this.theme = this.$store.state.theme;
         }
     },
 });

@@ -3,18 +3,23 @@ import {KEYS, ACTIONS_TYPE} from "@/constants";
 import {Theme} from "@/types/themes";
 import {User, UserLoginResponse} from "@/types/users";
 
-export default createStore({
+
+interface StoreState {
+    user: User | null;
+    token: string | null;
+    theme: Theme | null;
+}
+
+export default createStore<StoreState>({
     state: {
         //---------------- User ----------------²
-        user: {} as User,
-        token: "" as string,
+        user: null,
+        token: null,
 
         //---------------- Theme ----------------²
-        theme: {} as Theme,
+        theme: null,
     },
     getters: {
-        theme: (state) => state.theme,
-        user: (state) => state.user,
         is_authenticated: (state) => {
             console.log(state.token);
             return state.token !== "";
