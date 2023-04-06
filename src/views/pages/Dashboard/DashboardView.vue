@@ -40,7 +40,7 @@
               class="border d-flex align-items-center justify-content-between p-3"
             >
               <div>
-                <img src="../../../assets/images/avatar.png" alt="" />
+                <img src="../../../../src/assets/images/avatar.png" alt="" />
                 <span class="ms-4 text-uppercase fw-bold">{{
                   friend.name
                 }}</span>

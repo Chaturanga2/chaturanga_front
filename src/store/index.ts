@@ -23,7 +23,7 @@ export default createStore<StoreState>({
     user: (state) => state.user,
     is_authenticated: (state) => {
       console.log(state.token);
-      return state.token !== '';
+      return state.token !== null;
     },
   },
   mutations: {
