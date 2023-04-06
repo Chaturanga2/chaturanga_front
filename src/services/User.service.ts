@@ -13,6 +13,11 @@ class UserService {
         const {data} : {data: UserLoginResponse} = await axiosInstance.post('/auth/login', user);
         return data;
     }
+
+    async getUserProfile(id: string): Promise<User> {
+        const { data }: { data: User } = await axiosInstance.get(`/users/${id}`);
+        return data;
+    }
 }
 
 export default new UserService();

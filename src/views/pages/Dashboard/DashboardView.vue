@@ -178,6 +178,35 @@
                 <div class="card mb-4">
                     <div class="card-header">detail profile</div>
                     <div class="card-body">
+                        <Form @submit="handleLogin()">
+                            <div class="form-group">
+                                <label for="email">Adresse e-mail</label>
+                                <ErrorMessage
+                                    name="email"/>
+                                <Field
+                                    :rules="formValidation.checkEmail"
+                                    v-model="userData.email"
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    placeholder="Entrez votre adresse e-mail"
+                                    name="email"/>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="password">Mot de passe</label>
+                                <ErrorMessage
+                                    name="password"/>
+                                <Field
+                                    :rules="formValidation.checkPassword"
+                                    v-model="userData.password"
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    placeholder="Entrez votre mot de passe"
+                                    name="password"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Connexion</button>
+                        </Form>
                         <form>
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">PSEUDO</label>
@@ -245,11 +274,24 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import {Form, Field, ErrorMessage} from 'vee-validate';
+import {FormValidationService} from '@/services/FormValidation.service'
+import UserService from '@/services/User.service';
+import {UserLoginResponse, UserType} from '@/types/users';
+
 export default {
     name: "DashboardView",
+
+    components: {Form, Field, ErrorMessage},
+
     data() {
         return {
+            userData: {
+                email: "",
+                password: "",
+            },
+            formValidation: FormValidationService,
             nav_index: 0,
             friends: [
                 {
@@ -288,6 +330,20 @@ export default {
                 },
             ],
         };
+    },
+    methods:{
+        async getUser(): Promise<UserType> {
+            try {
+                const response = await UserService.getUserProfile(this.$store.getters.userID);
+                console.log(response);
+                this.userData = response.data;
+            } catch (error) {
+                console.error("Error getting user profile:", error);
+            }            
+        }
+    },
+    mounted(){
+        this.getUser();
     },
 }
 </script>

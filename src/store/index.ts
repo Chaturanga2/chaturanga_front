@@ -2,6 +2,7 @@ import {createStore} from "vuex";
 import {KEYS, ACTIONS_TYPE} from "@/constants";
 import {Theme} from "@/types/themes";
 import {User, UserLoginResponse} from "@/types/users";
+import { state } from "@/server";
 
 export default createStore({
     state: {
@@ -15,8 +16,8 @@ export default createStore({
     getters: {
         theme: (state) => state.theme,
         user: (state) => state.user,
+        userID: (state) => state.user.id,
         is_authenticated: (state) => {
-            console.log(state.token);
             return state.token !== "";
         },
     },
@@ -28,7 +29,7 @@ export default createStore({
 
         setToken(state, token: string) {
             state.token = token;
-            localStorage.setItem(KEYS.USER_TOKEN, KEYS.USER_TOKEN);
+            localStorage.setItem(KEYS.USER_TOKEN, token);
         },
 
         setTheme(state, theme: Theme) {
