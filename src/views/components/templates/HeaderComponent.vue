@@ -107,10 +107,8 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-//import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
-import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "../../../helpers/defaultTheme";
-//import { PATHS_NAME } from '@/constants';
-import { PATHS_NAME } from '../../../constants';
+import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
+import { PATHS_NAME } from '@/constants';
 
 export default defineComponent({
     name: 'HeaderComponent',

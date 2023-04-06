@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <h1 class="text-center">Bienvenue sur Chaturanga7.0, le nouveau jeu d'échecs en ligne !</h1>
+      <h1 class="text-center">Bienvenue sur Chaturanga, le nouveau jeu d'échecs en ligne !</h1>
 
       <div class="col text-center py-5 mt-5">
           <img src="../../../assets/board.png" class="rounded w-50 h-50" alt="">

@@ -23,7 +23,7 @@
                             v-for="(friend, index) in friends" :key="`friend-${index}`"
                             class="border d-flex align-items-center justify-content-between p-3">
                             <div>
-                                <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" alt="">
+                                <img :src="friends[0].avatar" alt="">
                                 <span class="ms-4 text-uppercase fw-bold">{{ friend.name }}</span>
                             </div>
                             <div>
@@ -50,7 +50,7 @@
                             v-for="(friend, index) in friendRequests" :key="`friend-request-${index}`"
                             class="border d-flex align-items-center justify-content-between p-3">
                             <div>
-                                <img src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                                <img :src="friends[1].avatar" alt="">
                                 <span class="ms-4 text-uppercase fw-bold">{{ friend.name }}</span>
                             </div>
                             <div>
@@ -78,7 +78,7 @@
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <div style="height: 200px;">
-                            <img class="w-75 h-100 rounded-circle mb-2" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                            <img class="w-75 h-100 rounded-circle mb-2" :src="friends[2].avatar"
                                  alt="">
                         </div>
                         <!-- Profile picture help block-->
@@ -165,7 +165,7 @@
                         <!-- Profile picture image-->
                         <div style="height: 200px;">
                             <img class="w-75 h-100 rounded-circle mb-2"
-                                 src="https://source.unsplash.com/sNut2MqSmds/60x60" alt="">
+                                 :src="friends[3].avatar" alt="">
                         </div>
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">Taille d'image inferieur 5 MB</div>
