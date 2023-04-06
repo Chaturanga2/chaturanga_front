@@ -4,13 +4,10 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-import './themes/Gryffondor.scss';
-import './themes/Serdaigle.scss';
-import './themes/Poufsouffle.scss';
-import './themes/Serpentard.scss';
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Toaster from '@meforma/vue-toaster';
