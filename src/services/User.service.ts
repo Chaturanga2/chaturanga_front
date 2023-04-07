@@ -1,7 +1,6 @@
 import axiosInstance from "@/http-common";
 import { User, UserLoginResponse } from "@/types/users";
 import {GlobalResponse} from "@/types/GlobalResponse";
-import store from "@/store";
 
 class UserService {
 
