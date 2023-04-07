@@ -55,13 +55,17 @@
                                 </li>
                             </ul>
                         </li>
+                        <div>
+                            <button @click="toggleLocale" class="btn btn-primary rounded-button">{{ t('header.language') }}</button>
+                        </div>
                         <template v-if="!$store.getters.is_authenticated">
                             <li class="nav-item">
                                 <router-link
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link active"
                                     :to="{ name: PATHS_NAME.LOGIN }"
-                                >Sign In
+                                >
+                                {{ t('header.signIn') }}
                                 </router-link>
                             </li>
                             <li class="nav-item">
@@ -69,7 +73,8 @@
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
                                     :to="{ name: PATHS_NAME.REGISTER }"
-                                >Sign Up
+                                >
+                                {{ t('header.signUp') }}
                                 </router-link>
                             </li>
                         </template>
@@ -79,7 +84,8 @@
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
                                     :to="{ name: PATHS_NAME.DASHBOARD }"
-                                >My Account
+                                >
+                                {{ t('header.myAccount') }}
                                 </router-link>
                             </li>
                             <li class="nav-item">
@@ -87,7 +93,8 @@
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
                                     :to="{ name: PATHS_NAME.HOME }"
-                                >Ranking
+                                >
+                                {{ t('header.ranking') }}
                                 </router-link>
                             </li>
                             <li class="nav-item">
@@ -95,15 +102,14 @@
                                     :class="theme.navbar.navbar_color"
                                     class="nav-link"
                                     :to="{ name: PATHS_NAME.HOME }"
-                                >Play
+                                >
+                                {{ t('header.play') }}
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <button class="btn btn-link" @click="logout()">Deconnecter</button>
+                                <button class="btn btn-link" @click="logout()">{{ t('header.signOut') }}</button>
                             </li>
                         </template>
-
-
                     </ul>
                 </div>
             </div>
@@ -116,11 +122,23 @@ import {defineComponent} from 'vue';
 import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
 import { PATHS_NAME } from '@/constants';
 import { useTranslation } from '@/utilities/useTranslation';
+import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
 
 export default defineComponent({
     setup() {
         const { t } = useTranslation()
-        return { t };
+        const { locale } = useI18n();
+        const currentLocale = computed(() => locale.value);
+
+        const toggleLocale = () => {
+            if (currentLocale.value === 'en-EN') {
+                locale.value = 'fr-FR';
+            } else if (currentLocale.value === 'fr-FR') {
+                locale.value = 'en-EN';
+            }
+        };
+        return { t, currentLocale: locale, toggleLocale};
     },
     name: 'HeaderComponent',
     data() {
@@ -175,4 +193,20 @@ export default defineComponent({
 
 <style scoped>
 @import url("@/assets/css/header.css");
+.rounded-button {
+    border: none;
+    background-color: transparent;
+    border-radius: 50px;
+    color: #fff;
+    margin: 0 12px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.rounded-button:hover {
+    background-color: white;
+    color: black;
+}
 </style>

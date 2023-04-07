@@ -1,5 +1,26 @@
 {
     "name": "Chaturanga",
+    "home": {
+        "welcome": "Welcome to Chaturanga, the new online chess game!",
+        "whoAreWe": "Who are we?",
+        "ourGoal": "Chaturanga is a website for playing chess with a wizard twist, with friends or strangers online.",
+        "howToPlay": "But how do you play this game?",
+        "instructions": {
+            "firstInfos": "Sign in or register on the website to access the game page from the navigation bar!",
+            "secondInfos": "You can choose your game mode (with an online friend or with a random stranger) and select the difficulty level of the game."
+        },
+        "playNow": "Play now",
+        "toChessRules": "Not familiar with the rules of the game?"
+    },
+    "header": {
+        "language": "English",
+        "signIn": "Sign in",
+        "signUp": "Sign up",
+        "myAccount": "My account",
+        "ranking": "Ranking",
+        "play": "Play",
+        "signOut": "Sign out"
+    },
     "routes": {
         "home": "Home",
         "rules": "Rules",
@@ -12,13 +33,15 @@
         "invalidPassword": "The given password must contains at least 7 caracters",
         "pageNotFound": {
             "title": "Looks like you're lost sorcerer",
-            "message": "The page you are looking for not avaible",
+            "message": "The page you are looking for is not avaible",
             "404": "404"
         }
     },
     "forms": {
+        "firstName": "{before} First Name",
+        "lastName": "{before} Last Name",
         "register": "Register",
-        "username": "Username",
+        "username": "{before} Username",
         "login": "Login",
         "email": "{before} Email",
         "password": "{before} Password",

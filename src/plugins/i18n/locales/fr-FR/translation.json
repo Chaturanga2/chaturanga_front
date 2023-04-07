@@ -1,5 +1,26 @@
 {
     "name": "Chaturanga",
+    "home": {
+        "welcome": "Bienvenue sur Chaturanga, le nouveau jeu d'échecs en ligne !",
+        "whoAreWe": "Qui sommes nous ?",
+        "ourGoal": "Chaturanga est un site Web pour jouer aux échecs version sorcier entre amis ou avec des inconnus en ligne",
+        "howToPlay": "Mais comment jouer à ce jeu ?",
+        "instructions": {
+            "firstInfos": "Connectez-vous ou inscrivez-vous sur le site pour accéder à la page du jeu accessible depuis la barre de navigation !",
+            "secondInfos": " Vous pourrez choisir votre mode de jeu (avec un ami en ligne ou avec un inconnu au hasard) et sélectionner le niveau de difficulté du jeu."
+        },
+        "playNow": "Jouez maintenant",
+        "toChessRules": "Vous ne connaissez pas les règles du jeu ?"
+    },
+    "header": {
+        "language": "Français",
+        "signIn": "Se connecter",
+        "signUp": "S'inscrire",
+        "myAccount": "Mon compte",
+        "ranking": "Classement",
+        "play": "Jouer",
+        "signOut": "Se déconnecter"
+    },
     "routes": {
         "home": "Accueil",
         "rules": "Règles",
@@ -17,8 +38,10 @@
         }
     },
     "forms": {
+        "firstName": "{before} Prénom",
+        "lastName": "{before} Nom",
         "register": "S'inscrire",
-        "username": "Nom d'utilisateur",
+        "username": "{before} Nom d'utilisateur",
         "login": "Se connecter",
         "email": "{before} E-mail",
         "password": "{before} Mot de passe",

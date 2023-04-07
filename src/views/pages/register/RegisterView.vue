@@ -1,40 +1,103 @@
+
 <template>
-    <div class="container my-5">
-        <h1 class="text-center">{{ t("forms.register") }}</h1>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card p-4">
-                    <form>
-                        <div class="form-grou mt-3">
-                            <label for="name">{{ t("forms.username") }}</label>
-                            <input type="text" class="form-control" id="name" placeholder="Entrez votre nom complet">
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="email">{{ t("forms.email") }}</label>
-                            <input 
-                                type="email" 
-                                class="form-control" 
-                                id="email" 
-                                :placeholder="t('forms.email', { before: t('forms.placeholder') })"
-                            >
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="password">{{ t("forms.password") }}</label>
-                            <input 
-                                type="password" 
-                                class="form-control" 
-                                id="password" 
-                                :placeholder="t('forms.password', { before: t('forms.placeholder') })"
-                            >
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="password_confirmation">{{ t('forms.password', { before: t('forms.confirm') }) }}</label>
-                            <input type="password" class="form-control" id="password_confirmation" :placeholder="t('forms.password', { before: t('forms.confirm') })">
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-3">{{ t("forms.register") }}</button>
-                    </form>
+    <div style="height: 80vh !important;" class="container d-flex align-items-center justify-content-center">
+        <div class="col-12 col-md-10 col-lg-6 bg-white p-5 shadow p-3 mb-5 bg-body rounded">
+            <h1 class="h5">{{ t("forms.register") }}</h1>
+            <Form @submit="handelRegister()" class="mt-5">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label for="email">{{ t("forms.lastName") }} <span class="text-danger">*</span></label>
+                        <ErrorMessage
+                            name="email"/>
+                        <Field
+                            :rules="FormValidationService.checkEmail"
+                            v-model="userData.first_name"
+                            type="text"
+                            class="form-control"
+                            id="first_name"
+                            :placeholder="t('forms.lastName', { before: t('forms.placeholder') })"
+                            name="first_name"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <label for="email">{{ t("forms.firstName") }} <span class="text-danger">*</span></label>
+                        <Field
+                            :rules="FormValidationService.checkEmail"
+                            v-model="userData.last_name"
+                            type="text"
+                            class="form-control"
+                            id="last_name"
+                            :placeholder="t('forms.firstName', { before: t('forms.placeholder') })"
+                            name="last_name"
+                        />
+                    </div>
                 </div>
-            </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="email">{{ t("forms.username") }} <span class="text-danger">*</span></label>
+                        <ErrorMessage
+                            name="email"/>
+                        <Field
+                            :rules="FormValidationService.checkEmail"
+                            v-model="userData.username"
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            :placeholder="t('forms.username', { before: t('forms.placeholder') })"
+                            name="username"
+                        />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="email">{{ t("forms.email") }}<span class="text-danger">*</span></label>
+                        <ErrorMessage
+                            name="email"/>
+                        <Field
+                            :rules="FormValidationService.checkEmail"
+                            v-model="userData.email"
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            :placeholder="t('forms.email', { before: t('forms.placeholder') })"
+                            name="email"
+                        />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label for="email">{{ t("forms.password") }}<span class="text-danger">*</span></label>
+                        <ErrorMessage
+                            name="email"/>
+                        <Field
+                            :rules="FormValidationService.checkPassword"
+                            v-model="userData.password"
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            :placeholder="t('forms.password', { before: t('forms.placeholder') })"
+                            name="password"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <label for="email">{{ t('forms.password', { before: t('forms.confirm') }) }}<span class="text-danger">*</span></label>
+                        <Field
+                            :rules="FormValidationService.checkEmail"
+                            v-model="userData.password_confirmation"
+                            type="password"
+                            class="form-control"
+                            id="password_confirmation"
+                            :placeholder="t('forms.password', { before: t('forms.confirm') })"
+                            name="password_confirmation"
+                        />
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <button class="btn btn-outline-success"> {{ t("forms.register") }}</button>
+                </div>
+            </Form>
         </div>
     </div>
 </template>

@@ -9,7 +9,7 @@
                 <h1 class="text-center">{{ t("errors.pageNotFound.404") }}</h1>
               </div>
               <div class="contant_box_404">
-                <h3 class="h2">{{ t("errors.pageNotFound.message") }}</h3>
+                <h3 class="h2">{{ t("errors.pageNotFound.title") }}</h3>
                 <p>{{ t("errors.pageNotFound.message") }}</p>
                 <router-link :to="{ name: 'HOME' }" class="link_404">
                   {{ t("routes.home") }}
@@ -73,7 +73,5 @@ export default defineComponent({
   margin: 20px 0;
   display: inline-block;
 }
-.contant_box_404 {
-  margin-top: -50px;
-}
+
 </style>
