@@ -1,0 +1,88 @@
+{
+    "name": "Chaturanga",
+    "home": {
+        "welcome": "Welcome to Chaturanga, the new online chess game!",
+        "whoAreWe": "Who are we?",
+        "ourGoal": "Chaturanga is a website for playing chess with a wizard twist, with friends or strangers online.",
+        "howToPlay": "But how do you play this game?",
+        "instructions": {
+            "firstInfos": "Sign in or register on the website to access the game page from the navigation bar!",
+            "secondInfos": "You can choose your game mode (with an online friend or with a random stranger) and select the difficulty level of the game."
+        },
+        "playNow": "Play now",
+        "toChessRules": "Not familiar with the rules of the game?"
+    },
+    "header": {
+        "language": "English",
+        "signIn": "Sign in",
+        "signUp": "Sign up",
+        "myAccount": "My account",
+        "ranking": "Ranking",
+        "play": "Play",
+        "signOut": "Sign out"
+    },
+    "routes": {
+        "home": "Home",
+        "rules": "Rules",
+        "about": "About us",
+        "contact": "Contact"
+    },
+    "errors": {
+        "noValue": "No value provided",
+        "invalidInput": "The given input does not fit required format",
+        "invalidPassword": "The given password must contains at least 7 caracters",
+        "pageNotFound": {
+            "title": "Looks like you're lost sorcerer",
+            "message": "The page you are looking for is not avaible",
+            "404": "404"
+        }
+    },
+    "forms": {
+        "firstName": "{before} First Name",
+        "lastName": "{before} Last Name",
+        "register": "Register",
+        "username": "{before} Username",
+        "login": "Login",
+        "email": "{before} Email",
+        "password": "{before} Password",
+        "placeholder": "Enter your",
+        "confirm": "Confirm your"
+    },
+    "admin": {
+        "dashboard": "Admin Dashboard"
+    },
+    "game": {
+        "title": "Chess game rules",
+        "subTitle": "Base rules",
+        "gameRules": "The game of chess is played on a board of 64 squares, alternately light and dark, called the white and black squares. Each player starts the game with 16 pieces: one king, one queen, two rooks, two bishops, two knights, and eight pawns.",
+        "endGame": "End of the game",
+        "endGameRules": "The game ends when a player checkmates the opponent's king, which means that the king is threatened with capture without any possibility of escape, or if one of the players declares a draw.",
+        "pieces": {
+            "all": "All pieces:",
+            "king": {
+                "name" : "The King",
+                "desc": "One square per move in all directions."
+            },
+            "queen": {
+                "name": "The Queen",
+                "desc": "It can move vertically, horizontally, and diagonally without any limit on the number of squares."
+            },
+            "bishop": {
+                "name": "Bishop",
+                "desc": "It can move diagonally according to the color defined at the beginning of the game and without any limit on the number of squares."
+            },
+            "knight": {
+                "name": "Knight",
+                "desc": "Moves in an L-shape in different ways:\n-Two squares horizontally or vertically and one square in the perpendicular direction.\n-One square horizontally or vertically and two squares in the perpendicular direction."
+            },
+            "rook": {
+                "name": "Rook",
+                "desc": "Can move horizontally or vertically in all directions without limit of number of squares."
+            },
+            "pawn": {
+                "name": "Pawn",
+                "desc": "\nMoves one square forward at a time.\nMoves two squares forward on its first move.\nMoves one square diagonally to capture opponent's piece."
+            }
+        }
+    }
+}

@@ -6,15 +6,14 @@
           <div class="col-sm-12">
             <div class="col-sm-10 col-sm-offset-1 text-center">
               <div class="four_zero_four_bg">
-                <h1 class="text-center">404</h1>
+                <h1 class="text-center">{{ t("errors.pageNotFound.404") }}</h1>
               </div>
-
               <div class="contant_box_404">
-                <h3 class="h2">Look like you're lost</h3>
-                <p>the page you are looking for not avaible!</p>
-                <router-link  :to="{ name: PATHS_NAME.HOME }" class="link_404"
-                  >Go to Home</router-link
-                >
+                <h3 class="h2">{{ t("errors.pageNotFound.title") }}</h3>
+                <p>{{ t("errors.pageNotFound.message") }}</p>
+                <router-link :to="{ name: 'HOME' }" class="link_404">
+                  {{ t("routes.home") }}
+                </router-link>
               </div>
             </div>
           </div>
@@ -25,14 +24,21 @@
 </template>
 
 <script lang="ts">
+
 import { defineComponent } from "vue";
 import { PATHS_NAME } from "../constants";
+import { useTranslation } from "@/utilities/useTranslation";
 export default defineComponent({
+  setup() {
+    const { t } = useTranslation();
+        return { t };
+    },
   name: "PageNotFoundView",
   data() {
     return {PATHS_NAME}
   }
 });
+
 </script>
 
 <style scoped>
@@ -67,7 +73,5 @@ export default defineComponent({
   margin: 20px 0;
   display: inline-block;
 }
-.contant_box_404 {
-  margin-top: -50px;
-}
+
 </style>

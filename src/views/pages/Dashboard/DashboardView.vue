@@ -79,7 +79,7 @@
                         <!-- Profile picture image-->
                         <div style="height: 200px;">
                             <img class="w-75 h-100 rounded-circle mb-2" :src="friends[2].avatar"
-                                 alt="">
+                                alt="">
                         </div>
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">Taille d'image inferieur 5 MB</div>
@@ -244,6 +244,9 @@
 import {defineComponent} from "vue";
 import UserService from "@/services/User.service";
 import {User} from "@/types/users";
+import {Form, Field, ErrorMessage} from 'vee-validate';
+import {FormValidationService} from '@/services/FormValidation.service';
+import { useTranslation } from '@/utilities/useTranslation';
 
 export default defineComponent({
     name: "DashboardView",
