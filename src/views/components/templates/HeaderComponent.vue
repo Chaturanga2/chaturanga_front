@@ -6,9 +6,9 @@
                     :class="theme.navbar.navbar_color"
                     class="nav-link"
                     :to="{ name: PATHS_NAME.HOME }">
-                <a class="navbar-brand" :class="theme.navbar.navbar_color" href="#"
-                >Chaturanga <img src="../../../assets/images/chessLogo.png" alt=""
-                /></a>
+                    <a class="navbar-brand" :class="theme.navbar.navbar_color" href="#"
+                    >Chaturanga <img src="../../../assets/images/chessLogo.png" alt=""
+                    /></a>
                 </router-link>
                 <button
                     class="navbar-toggler"
@@ -21,7 +21,7 @@
                 >
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">

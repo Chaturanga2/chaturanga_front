@@ -33,8 +33,7 @@ export default createStore<StoreState>({
 
         setToken(state, token: string) {
             state.token = token;
-            localStorage.setItem(KEYS.USER_TOKEN, token);
-            localStorage.setItem('refresh_token', token);
+            localStorage.setItem(KEYS.USER_TOKEN, KEYS.USER_TOKEN);
         },
 
         setTheme(state, theme: Theme) {
