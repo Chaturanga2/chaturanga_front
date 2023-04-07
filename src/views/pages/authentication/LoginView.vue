@@ -46,6 +46,7 @@ import {Form, Field, ErrorMessage} from 'vee-validate';
 import {FormValidationService} from '@/services/FormValidation.service'
 import UserService from '@/services/User.service';
 import {UserLoginResponse} from '@/types/users';
+import socket from "@/socketIo";
 
 export default defineComponent({
     name: "LoginView",
@@ -70,8 +71,9 @@ export default defineComponent({
          * @return void
          */
         handleLogin(): void {
-            UserService.login(this.userData).then((Response: UserLoginResponse) => {
-                this.$store.dispatch("login", Response);
+            UserService.login(this.userData).then((response: UserLoginResponse) => {
+                this.$store.dispatch("login", response);
+                socket.emit("setAuthUser", { userId: response.user?.id, username: response.user?.username });
                 this.$router.push({name: "DASHBOARD"});
             }).catch( error => {
                 console.log(error.response.data.message)

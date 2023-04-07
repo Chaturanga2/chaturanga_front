@@ -20,6 +20,12 @@ export default createStore<StoreState>({
         theme: null,
     },
     getters: {
+        user_id: (state) => {
+            return state.user?.id;
+        },
+        username: (state) => {
+            return state.user?.username;
+        },
         is_authenticated: (state) => {
             console.log(state.token);
             return state.token !== "";
@@ -33,7 +39,7 @@ export default createStore<StoreState>({
 
         setToken(state, token: string) {
             state.token = token;
-            localStorage.setItem(KEYS.USER_TOKEN, KEYS.USER_TOKEN);
+            localStorage.setItem(KEYS.USER_TOKEN, token);
         },
 
         setTheme(state, theme: Theme) {

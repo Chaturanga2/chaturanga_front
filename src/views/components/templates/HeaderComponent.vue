@@ -115,6 +115,7 @@
 import {defineComponent} from 'vue';
 import { DefaultTheme, DefaultLogo, DefaultNavCodeColor } from "@/helpers/defaultTheme";
 import { PATHS_NAME } from '@/constants';
+import socket from "@/socketIo";
 
 export default defineComponent({
     name: 'HeaderComponent',
@@ -156,6 +157,7 @@ export default defineComponent({
          * Déconnecter un utilisateur
          */
         logout() {
+            socket.emit("logoutUser", this.$store.getters.user_id);
             this.$store.dispatch('logout');
             this.$router.push({name: 'HOME'}); // Pour l'instant on redirige vers la page d'accueil
         },

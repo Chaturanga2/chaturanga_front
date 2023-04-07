@@ -1,5 +1,3 @@
-import { routeLocationKey } from "vue-router";
-
 export type User = {
     id?: number;
     first_name?: string,

@@ -1,6 +1,7 @@
 import axiosInstance from "@/http-common";
 import { User, UserLoginResponse } from "@/types/users";
 import {GlobalResponse} from "@/types/GlobalResponse";
+import store from "@/store";
 
 class UserService {
 
@@ -16,6 +17,11 @@ class UserService {
 
     async getUserProfile(id: object): Promise<User> {
         const { data }: { data: User } = await axiosInstance.get(`/users/${id}`);
+        return data;
+    }
+
+    async update(id: number, user: User): Promise<User> {
+        const { data }: { data: User } = await axiosInstance.put(`/users/${id}`, user);
         return data;
     }
 }

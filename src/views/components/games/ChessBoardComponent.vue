@@ -1,25 +1,50 @@
 <template>
-    <div class="grid-container">
-        <div class="grid-row">
-            <div class="grid-header"></div>
-            <div v-for="(y, yIndex) in y_axe" :key="yIndex" class="grid-header">{{ y }}</div>
-        </div>
-        <div v-for="(row, xIndex) in board" :key="xIndex" class="grid-row">
-            <div class="grid-header">{{ x_axe[xIndex] }}</div>
-            <div
-                v-for="(cell, yIndex) in row" :key="yIndex"
-                class="grid-cell" :class="{ 'grid-cell-black': (xIndex + yIndex) % 2 === 1 }"
-                @dragstart="dragPawn(xIndex, y_axe[yIndex], $event)" @drop="dropPawn(xIndex, y_axe[yIndex], $event)"
-                @dragover.prevent
-            >
-                <img class="w-100 h-100" v-if="cell.piece" :src="cell.piece.image" alt="Piece"/>
-            </div>
-            <div class="grid-header">{{ x_axe[xIndex] }}</div>
-        </div>
+    <div style="min-height: 80vh" class="container-fluid px-0 mx-0">
+        <div v-if="!win" class="container-fluid d-flex align-items-center justify-content-center border">
+            <div class="col grid-container">
+                <div class="grid-row">
+                    <div class="grid-header"></div>
+                    <div v-for="(y, yIndex) in y_axe" :key="yIndex" class="grid-header">{{ y }}</div>
+                </div>
+                <div v-for="(row, xIndex) in board" :key="xIndex" class="grid-row">
+                    <div class="grid-header">{{ x_axe[xIndex] }}</div>
+                    <div
+                        v-for="(cell, yIndex) in row" :key="yIndex"
+                        class="grid-cell" :class="{ 'grid-cell-black': (xIndex + yIndex) % 2 === 1 }"
+                        @dragstart="dragPawn(xIndex, y_axe[yIndex], $event)"
+                        @drop="dropPawn(xIndex, y_axe[yIndex], $event)"
+                        @dragover.prevent
+                    >
+                        <img class="w-100 h-100" v-if="cell.piece" :src="cell.piece.image" alt="Piece"/>
+                    </div>
+                    <div class="grid-header">{{ x_axe[xIndex] }}</div>
+                </div>
 
-        <div class="grid-row">
-            <div class="grid-header"></div>
-            <div v-for="(y, yIndex) in y_axe" :key="yIndex" class="grid-header">{{ y }}</div>
+                <div class="grid-row">
+                    <div class="grid-header"></div>
+                    <div v-for="(y, yIndex) in y_axe" :key="yIndex" class="grid-header">{{ y }}</div>
+                </div>
+            </div>
+            <div class="col-4 d-flex align-items-center justify-content-around p-5">
+                <div class="col">
+                    <h5> {{ user_1.pseudo }} </h5>
+                    <div v-for="(move, index) in first_player_history" :key="index">
+                        {{ move }}
+                    </div>
+                </div>
+                <div class="col">
+                    <h5> {{ user_2.pseudo }} </h5>
+                    <div v-for="(move, index) in second_player_history" :key="index">
+                        {{ move }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-else class="col-10 top-0 bg-dark">
+            <div class="col-7 text-center">
+                <h2>Le joueur {{ currentPlayer }} a capturé le roi</h2>
+                <button class="btn btn-lg btn-outline-light">Rejouer la partie</button>
+            </div>
         </div>
     </div>
 </template>
@@ -39,6 +64,9 @@ export default defineComponent({
             board: [] as CellType[][],
             currentPlayer: "w",
             success: false,
+            win: false,
+            user_1: {},
+            user_2: {},
             first_player_history: [] as string[],
             second_player_history: [] as string[],
         };
@@ -77,7 +105,7 @@ export default defineComponent({
                 const newCell = this.board[x].find(cell => cell.y === y);
                 if (oldCell && newCell) {
                     if (newCell.piece?.symbol === 'k') {
-                        alert('You win !');
+                        this.win = true;
                         return;
                     }
                     this.allPawnMovement(oldCell, newCell);
@@ -238,15 +266,22 @@ export default defineComponent({
                 }
             }
         });
+        socket.emit("getAuthUser");
+        socket.on("getAuthUser", (users) => {
+            console.log("Position data received from server:", users);
+
+            this.user_1 = users[0];
+            this.user_2 = users[1];
+        });
     },
 });
 </script>
 
 <style scoped>
-.grid-container {
-    display: flex;
-    flex-direction: column;
-}
+/*.grid-container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
 .grid-row {
     display: flex;
