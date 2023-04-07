@@ -25,16 +25,44 @@
 
       <p>Vous ne connaissez pas les règles du jeu ? <router-link to="/ChessRules">Cliquez ici</router-link></p>
 
-
+      <ChessBoardComponent />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
+import ChessBoardComponent from "@/views/components/ChestBoard/ChessBoardComponent.vue";
+import socket from "../../../socketIo";
 
 export default defineComponent({
-  name: 'HomeView',
+  name: "HomeView",
+
+  components: {
+    ChessBoardComponent
+  },
+
+  data() {
+    return {
+      value: "",
+      message: ""
+    };
+  },
+
+  mounted() {
+    // Écouter l'événement "message" du serveur Socket.IO
+    socket.on("connect", () => console.log("connected"));
+
+    // Émettre l'événement "chat" vers le serveur Socket.IO
+    socket.emit("message", "Connexion done");
+  },
+
+  methods: {
+    sendMessage() {
+      socket.emit("message", this.message);
+      this.message = ""
+    },
+  },
 });
 </script>
 
